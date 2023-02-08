@@ -5,7 +5,7 @@ export const MainPage = () => {
 
   return (
     <div>
-      {t("Главная страница")}
+      {t("main:Главная страница")}
     </div>
   );
 };
