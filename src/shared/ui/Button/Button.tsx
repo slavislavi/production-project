@@ -12,16 +12,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({
-  className,
-  children,
-  variant,
-  ...rest
+    className,
+    children,
+    variant,
+    ...rest
 }: ButtonProps) => (
-  <button
-    type="button"
-    className={classNames(cls.Button, { [cls[variant]]: true }, [className])}
-    {...rest}
-  >
-    {children}
-  </button>
+    <button
+        type="button"
+        className={classNames(cls.Button, { [cls[variant]]: true }, [className])}
+        {...rest}
+    >
+        {children}
+    </button>
 );
