@@ -15,6 +15,9 @@ export default {
         'json',
         'node',
     ],
+    modulePaths: [
+        '<rootDir>src',
+    ],
     testMatch: [
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
     ],
