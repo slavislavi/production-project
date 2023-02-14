@@ -51,4 +51,12 @@ module.exports = {
             version: 'detect',
         },
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts, tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };
