@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { Button } from './Button';
+import { Button, ButtonVariant } from './Button';
 
-describe('classNames', () => {
-    test('with only first param', () => {
+describe('Button', () => {
+    test('test render in DOM', () => {
         render(<Button>TEST</Button>);
         expect(screen.getByText('TEST')).toBeInTheDocument();
+    });
+
+    test('with clear variant class', () => {
+        render(<Button variant={ButtonVariant.CLEAR}>TEST</Button>);
+        expect(screen.getByText('TEST')).toHaveClass('clear');
     });
 });
