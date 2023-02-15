@@ -10,25 +10,21 @@ export default ({ config }: { config: Configuration }) => {
         entry: '',
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
-    config.resolve.modules.push(paths.src);
-    config.resolve.extensions.push('.ts', '.tsx');
 
-    // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-        if (/svg/.test(rule.test as string)) {
-            return { ...rule, exclude: /\.svg$/i };
-        }
+    config.resolve?.modules?.push(paths.src);
+    config.resolve?.extensions?.push('.ts', '.tsx');
 
-        return rule;
-    });
+    const rules = config.module?.rules;
+    const svgLoaderRule = rules?.find((rule) => rule !== '...' && /svg/.test(rule.test as string));
+    (svgLoaderRule as RuleSetRule).exclude = /\.svg$/i;
 
-    config.module.rules.push(
+    rules?.push(
         {
             test: /\.svg$/,
             use: ['@svgr/webpack'],
         },
     );
-    config.module.rules.push(buildCssLoader(true));
+    rules?.push(buildCssLoader(true));
 
     return config;
 };
