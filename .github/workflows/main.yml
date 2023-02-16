@@ -1,15 +1,16 @@
-name: Pipeline CI
-run-name: ${{ github.actor }} is testing, linting, building the project
+name: Pipeline CI (linting, testing, building)
 on: 
   push:
     branches: [ main ]
-  pull_request: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   pipeline:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [ 17.x ]
+
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
