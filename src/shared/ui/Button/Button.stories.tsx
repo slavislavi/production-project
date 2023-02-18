@@ -32,6 +32,20 @@ Outlined.args = {
     variant: ButtonVariant.OUTLINED,
 };
 
+export const OutlinedSizeL = Template.bind({});
+OutlinedSizeL.args = {
+    children: 'Text',
+    variant: ButtonVariant.OUTLINED,
+    size: ButtonSize.L,
+};
+
+export const OutlinedSizeXL = Template.bind({});
+OutlinedSizeXL.args = {
+    children: 'Text',
+    variant: ButtonVariant.OUTLINED,
+    size: ButtonSize.XL,
+};
+
 export const OutlinedDark = Template.bind({});
 OutlinedDark.args = {
     children: 'Text',
@@ -56,14 +70,6 @@ Square.args = {
     children: '>',
     variant: ButtonVariant.BACKGROUND_INVERTED,
     square: true,
-};
-
-export const SquareSizeM = Template.bind({});
-SquareSizeM.args = {
-    children: '>',
-    variant: ButtonVariant.BACKGROUND_INVERTED,
-    square: true,
-    size: ButtonSize.M,
 };
 
 export const SquareSizeL = Template.bind({});
