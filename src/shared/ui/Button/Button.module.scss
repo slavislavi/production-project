@@ -4,11 +4,16 @@
     padding: 6px 15px;
 }
 
-.clear {
+.clear,
+.clear_inverted {
     padding: 0;
     border: none;
     background: none;
     outline: none;
+}
+
+.clear_inverted {
+    color: var(--inverted-primary-color);
 }
 
 .outlined {
@@ -23,7 +28,7 @@
     border: none;
 }
 
-.background-inverted {
+.background_inverted {
     background: var(--inverted-bg-color);
     color: var(--inverted-primary-color);
     border: none;
@@ -33,29 +38,29 @@
     padding: 0;
 }
 
-.square.size-m {
+.square.size_m {
     width: var(--font-line-m);
     height: var(--font-line-m);
 }
 
-.square.size-l {
+.square.size_l {
     width: var(--font-line-l);
     height: var(--font-line-l);
 }
 
-.square.size-xl {
+.square.size_xl {
     width: var(--font-line-xl);
     height: var(--font-line-xl);
 }
 
-.size-m {
+.size_m {
     font: var(--font-m);
 }
 
-.size-l {
+.size_l {
     font: var(--font-l);
 }
 
-.size-xl {
+.size_xl {
     font: var(--font-xl);
 }

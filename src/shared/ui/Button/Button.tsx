@@ -4,15 +4,16 @@ import cls from './Button.module.scss';
 
 export enum ButtonVariant {
   CLEAR = 'clear',
+  CLEAR_INVERTED = 'clear_inverted',
   OUTLINED = 'outlined',
   BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'background-inverted',
+  BACKGROUND_INVERTED = 'background_inverted',
 }
 
 export enum ButtonSize {
-    M = 'size-m',
-    L = 'size-l',
-    XL = 'size-xl'
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
