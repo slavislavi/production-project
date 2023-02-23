@@ -12,9 +12,9 @@ export const LoginForm = ({ className }: LoginFormProps) => {
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
-            <input type="text" />
-            <input type="text" />
-            <Button>
+            <input className={cls.input} type="text" />
+            <input className={cls.input} type="text" />
+            <Button className={cls.loginBtn}>
                 {t('Войти')}
             </Button>
         </div>
