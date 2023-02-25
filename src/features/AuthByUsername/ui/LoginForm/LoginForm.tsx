@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
 import { loginActions } from '../../model/slice/loginSlice';
@@ -34,7 +35,8 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
-            {error && <div>{error}</div>}
+            <Text title={t('Авторизация')} />
+            {error && <Text text={error} variant={TextVariant.ERROR} />}
             <Input
                 autoFocus
                 className={cls.input}
