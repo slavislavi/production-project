@@ -36,6 +36,13 @@
         }
     ],
     "profile": {
-        "name": "typicode"
+        "firstName": "John",
+        "lastName": "Connor",
+        "age": "36",
+        "currency": "BYN",
+        "country": "Belarus",
+        "city": "Minsk",
+        "username": "T-800",
+        "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
     }
 }

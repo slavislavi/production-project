@@ -9,7 +9,7 @@ i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        ns: ['about', 'main', 'errors', 'translation'],
+        ns: ['about', 'main', 'errors', 'profile', 'translation'],
         defaultNS: 'translation',
         fallbackLng: false,
         debug: __IS_DEV__,
