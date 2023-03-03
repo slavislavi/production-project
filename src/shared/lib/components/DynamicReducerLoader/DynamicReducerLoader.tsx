@@ -8,14 +8,14 @@ export type ReducersList = {
     [keyName in StateSchemaKey]?: Reducer;
 };
 
-interface DynamicModuleLoaderProps {
+interface DynamicReducerLoaderProps {
     reducers: ReducersList;
     removeAfterUnmount?: boolean;
 }
 
 type ReducersListEntry = [StateSchemaKey, Reducer];
 
-export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
+export const DynamicReducerLoader: FC<DynamicReducerLoaderProps> = (props) => {
     const {
         children,
         reducers,

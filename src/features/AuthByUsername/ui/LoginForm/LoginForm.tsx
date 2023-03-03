@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
@@ -48,7 +48,7 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     }, [dispatch, onSuccess, password, username]);
 
     return (
-        <DynamicModuleLoader
+        <DynamicReducerLoader
             reducers={initialReducers}
             removeAfterUnmount
         >
@@ -77,7 +77,7 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                     {t('Войти')}
                 </Button>
             </div>
-        </DynamicModuleLoader>
+        </DynamicReducerLoader>
 
     );
 });
