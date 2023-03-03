@@ -2,23 +2,13 @@
     "posts": [
         {
             "id": "1",
-            "title": "json-server1",
-            "author": "typicode"
+            "title": "json-server",
+            "userId": "1"
         },
         {
             "id": "2",
-            "title": "json-ser222",
-            "author": "typicode"
-        },
-        {
-            "id": "3",
-            "title": "json-ser3333",
-            "author": "typicode"
-        },
-        {
-            "id": "4",
-            "title": "json-se4444",
-            "author": "typicode"
+            "title": "json-server",
+            "userId": "2"
         }
     ],
     "comments": [
@@ -42,7 +32,7 @@
         "currency": "BYN",
         "country": "Belarus",
         "city": "Minsk",
-        "username": "T-800",
+        "username": "admin",
         "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
     }
 }

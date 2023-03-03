@@ -6,6 +6,7 @@
                 "./src/*"
             ]
         },
+        "strict": true,
         "outDir": "./dist/",
         "noImplicitAny": true,
         "module": "ESNext",

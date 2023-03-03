@@ -14,10 +14,10 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
                     [
                         'i18next-extract',
                         {
+                            outputPath: 'public/locales/{{locale}}/{{ns}}.json',
                             locales: ['ru', 'en'],
                             keyAsDefaultValue: false,
                             saveMissing: true,
-                            outputPath: 'public/locales/{{locale}}/{{ns}}.json',
                         },
                     ],
                 ],
@@ -43,7 +43,14 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 
     const typescriptLoader = {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+            {
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                },
+            },
+        ],
         exclude: /node_modules/,
     };
 
