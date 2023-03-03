@@ -23,20 +23,20 @@ export const ProfileCard = ({ className }: ProfileCardProps) => {
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <div className={cls.header}>
-                <Text title="ddd" />
+                <Text title={t('Профиль', { ns: 'profile' })} />
                 <Button variant={ButtonVariant.OUTLINED} className={cls.editBtn}>
-                    {}
+                    {t('Редактировать', { ns: 'profile' })}
                 </Button>
             </div>
             <div className={cls.data}>
                 <Input
                     value={data?.firstName}
-                    placeholder="ddd"
+                    placeholder={t('Ваше имя', { ns: 'profile' })}
                     className={cls.input}
                 />
                 <Input
                     value={data?.lastName}
-                    placeholder="ddd"
+                    placeholder={t('Ваша фамилия', { ns: 'profile' })}
                     className={cls.input}
                 />
             </div>
