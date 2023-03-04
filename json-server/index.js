@@ -21,7 +21,7 @@ server.use(async (req, res, next) => {
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'utf-8'));
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { users = [] } = db;
 
         const userFromDb = users.find(
@@ -41,7 +41,7 @@ server.post('/login', (req, res) => {
 
 // check if user has been authorized
 // eslint-disable-next-line consistent-return
-server.use(async (req, res, next) => {
+server.use((req, res, next) => {
     if (!req.headers.authorization) {
         return res.status(403).json({ message: 'AUTH ERROR' });
     }
