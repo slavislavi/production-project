@@ -1,9 +1,11 @@
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/Text';
-import { getProfileReadonly } from 'entities/Profile';
+import { getProfileReadonly, profileActions } from 'entities/Profile';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -18,16 +20,33 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     const { t } = useTranslation();
 
     const readonly = useSelector(getProfileReadonly);
+    const dispatch = useAppDispatch();
+
+    const onEdit = useCallback(() => {
+        dispatch(profileActions.setReadonly(false));
+    }, [dispatch]);
+
+    const onCancelEdit = useCallback(() => {
+        dispatch(profileActions.setReadonly(true));
+    }, [dispatch]);
 
     return (
         <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
             <Text title={t('Профиль', { ns: 'profile' })} />
             {readonly ? (
-                <Button variant={ButtonVariant.OUTLINED} className={cls.editBtn}>
+                <Button
+                    variant={ButtonVariant.OUTLINED}
+                    className={cls.editBtn}
+                    onClick={onEdit}
+                >
                     {t('Редактировать', { ns: 'profile' })}
                 </Button>
             ) : (
-                <Button variant={ButtonVariant.OUTLINED} className={cls.editBtn}>
+                <Button
+                    variant={ButtonVariant.OUTLINED}
+                    className={cls.editBtn}
+                    onClick={onCancelEdit}
+                >
                     {t('Отменить', { ns: 'profile' })}
                 </Button>
             )}
