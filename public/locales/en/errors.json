@@ -1,6 +1,9 @@
 {
   "Выбросить ошибку": "Throw error",
   "Обновить страницу": "Refresh page",
+  "Попробуйте обновить страницу": "Try to refresh the page",
   "Произошла непредвиденная ошибка": "Unexpected error",
+  "Произошла ошибка при загрузке профиля": "An error occurred while loading the profile",
+  "Произошла ощибка при загрузке профиля": "",
   "Страница не найдена": "Page not found"
 }

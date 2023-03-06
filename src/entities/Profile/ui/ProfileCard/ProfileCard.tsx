@@ -41,8 +41,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
                 <Text
                     variant={TextVariant.ERROR}
-                    title={t('Произошла ощибка при загрузке профиля', { ns: 'error' })}
-                    text={t('Попробуйте обновить страницу', { ns: 'error' })}
+                    title={t('Произошла ошибка при загрузке профиля', { ns: 'errors' })}
+                    text={t('Попробуйте обновить страницу', { ns: 'errors' })}
                     align={TextAlign.CENTER}
                 />
             </div>
@@ -53,14 +53,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <div className={cls.data}>
                 <Input
-                    value={data?.firstName || ''}
+                    value={data?.firstName}
                     placeholder={t('Ваше имя', { ns: 'profile' })}
                     className={cls.input}
                     onChange={onChangeFirstName}
                     readonly={readonly}
                 />
                 <Input
-                    value={data?.lastName || ''}
+                    value={data?.lastName}
                     placeholder={t('Ваша фамилия', { ns: 'profile' })}
                     className={cls.input}
                     onChange={onChangeLastName}
