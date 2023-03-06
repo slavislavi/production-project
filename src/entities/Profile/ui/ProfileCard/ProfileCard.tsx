@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
@@ -46,12 +45,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
-            <div className={cls.header}>
-                <Text title={t('Профиль', { ns: 'profile' })} />
-                <Button variant={ButtonVariant.OUTLINED} className={cls.editBtn}>
-                    {t('Редактировать', { ns: 'profile' })}
-                </Button>
-            </div>
             <div className={cls.data}>
                 <Input
                     value={data?.firstName || ''}

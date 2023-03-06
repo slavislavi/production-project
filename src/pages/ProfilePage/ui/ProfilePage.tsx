@@ -7,6 +7,7 @@ import {
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
     profile: profileReducer,
@@ -29,6 +30,7 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
     return (
         <DynamicReducerLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
+                <ProfilePageHeader />
                 <ProfileCard
                     data={data}
                     isLoading={isLoading}
