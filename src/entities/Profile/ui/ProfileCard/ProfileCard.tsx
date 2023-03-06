@@ -1,24 +1,48 @@
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
-import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
+import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
     className?: string;
+    data?: Profile;
+    error?: string;
+    isLoading?: boolean;
 }
 
-export const ProfileCard = ({ className }: ProfileCardProps) => {
+export const ProfileCard = (props: ProfileCardProps) => {
+    const {
+        className,
+        data,
+        isLoading,
+        error,
+    } = props;
     const { t } = useTranslation();
 
-    const data = useSelector(getProfileData);
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
+                <Loader />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
+                <Text
+                    variant={TextVariant.ERROR}
+                    title={t('Произошла ощибка при загрузке профиля', { ns: 'error' })}
+                    text={t('Попробуйте обновить страницу', { ns: 'error' })}
+                    align={TextAlign.CENTER}
+                />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
