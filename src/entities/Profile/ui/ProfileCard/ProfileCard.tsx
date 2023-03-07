@@ -12,10 +12,12 @@ interface ProfileCardProps {
     error?: string;
     isLoading?: boolean;
     readonly?: boolean;
-    onChangeFirstName: (value?: string) => void;
-    onChangeLastName: (value?: string) => void;
-    onChangeAge: (value?: string) => void;
-    onChangeCity: (value?: string) => void;
+    onChangeFirstName?: (value?: string) => void;
+    onChangeLastName?: (value?: string) => void;
+    onChangeAge?: (value?: string) => void;
+    onChangeCity?: (value?: string) => void;
+    onChangeUsername?: (value?: string) => void;
+    onChangeAvatar?: (value?: string) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -29,6 +31,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeLastName,
         onChangeAge,
         onChangeCity,
+        onChangeUsername,
+        onChangeAvatar,
     } = props;
     const { t } = useTranslation();
 
@@ -56,6 +60,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <div className={cls.data}>
+                {data?.avatar && <img src={data?.avatar} alt="avatar" />}
                 <Input
                     value={data?.firstName}
                     placeholder={t('Ваше имя', { ns: 'profile' })}
@@ -82,6 +87,20 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     placeholder={t('Город', { ns: 'profile' })}
                     className={cls.input}
                     onChange={onChangeCity}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.username}
+                    placeholder={t('Псевдоним', { ns: 'profile' })}
+                    className={cls.input}
+                    onChange={onChangeUsername}
+                    readonly={readonly}
+                />
+                <Input
+                    value={data?.avatar}
+                    placeholder={t('Ссылка на аватар', { ns: 'profile' })}
+                    className={cls.input}
+                    onChange={onChangeAvatar}
                     readonly={readonly}
                 />
             </div>
