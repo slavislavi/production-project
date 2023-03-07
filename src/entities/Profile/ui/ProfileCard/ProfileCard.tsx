@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
@@ -60,7 +61,11 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <div className={classNames(cls.ProfileCard, {}, [className])}>
             <div className={cls.data}>
-                {data?.avatar && <img src={data?.avatar} alt="avatar" />}
+                {data?.avatar && (
+                    <div className={cls.avatarWrapper}>
+                        <Avatar src={data?.avatar} />
+                    </div>
+                )}
                 <Input
                     value={data?.firstName}
                     placeholder={t('Ваше имя', { ns: 'profile' })}
