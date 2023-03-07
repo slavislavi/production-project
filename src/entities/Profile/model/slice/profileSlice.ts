@@ -4,6 +4,7 @@ import { Profile, ProfileSchema } from '../types/profile';
 
 const initialState: ProfileSchema = {
     data: undefined,
+    form: undefined,
     isLoading: false,
     error: undefined,
     readonly: true,
@@ -16,8 +17,12 @@ export const profileSlice = createSlice({
         setReadonly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload;
         },
+        cancelEdit: (state) => {
+            state.readonly = true;
+            state.form = state.data;
+        },
         updateProfile: (state, action: PayloadAction<Profile>) => {
-            state.data = {
+            state.form = {
                 ...state.data,
                 ...action.payload,
             };
@@ -32,6 +37,7 @@ export const profileSlice = createSlice({
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
                 state.isLoading = false;
                 state.data = action.payload;
+                state.form = action.payload;
             })
             .addCase(fetchProfileData.rejected, (state, action) => {
                 state.isLoading = false;

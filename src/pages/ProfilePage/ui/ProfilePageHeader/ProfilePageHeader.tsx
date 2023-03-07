@@ -27,7 +27,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     }, [dispatch]);
 
     const onCancelEdit = useCallback(() => {
-        dispatch(profileActions.setReadonly(true));
+        dispatch(profileActions.cancelEdit());
     }, [dispatch]);
 
     return (

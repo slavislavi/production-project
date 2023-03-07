@@ -1,16 +1,15 @@
-import { useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import {
-    fetchProfileData,
-    getProfileData,
-    getProfileError,
+    fetchProfileData, getProfileError,
+    getProfileForm,
     getProfileIsLoading,
     getProfileReadonly,
     profileActions,
     ProfileCard,
     profileReducer,
 } from 'entities/Profile';
+import { useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -26,7 +25,7 @@ interface ProfilePageProps {
 export const ProfilePage = ({ className }: ProfilePageProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
-    const data = useSelector(getProfileData);
+    const formData = useSelector(getProfileForm);
     const isLoading = useSelector(getProfileIsLoading);
     const readonly = useSelector(getProfileReadonly);
     const error = useSelector(getProfileError);
@@ -48,7 +47,7 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
             <div className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
                 <ProfileCard
-                    data={data}
+                    data={formData}
                     isLoading={isLoading}
                     error={error}
                     readonly={readonly}
