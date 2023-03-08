@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
@@ -37,6 +37,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
     } = props;
     const { t } = useTranslation();
 
+    const mods: Mods = {
+        [cls.editing]: !readonly,
+    };
+
     if (isLoading) {
         return (
             <div className={classNames(cls.ProfileCard, { [cls.loading]: true }, [className])}>
@@ -59,7 +63,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     }
 
     return (
-        <div className={classNames(cls.ProfileCard, {}, [className])}>
+        <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.data}>
                 {data?.avatar && (
                     <div className={cls.avatarWrapper}>
