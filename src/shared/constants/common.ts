@@ -1,19 +1,3 @@
-export enum Currency {
-    RUB = 'RUB',
-    EUR = 'EUR',
-    USD = 'USD',
-    BYN = 'BYN',
-    BTC = 'BTC',
-    UAH = 'UAH',
-    KZT = 'KZT',
-    PLN = 'PLN',
-    GBP = 'GBP',
-    CNY = 'CNY',
-    JPY = 'JPY',
-    CAD = 'CAD',
-    AED = 'AED',
-}
-
 export enum Country {
     Russia = 'Russia',
     Belarus = 'Belarus',

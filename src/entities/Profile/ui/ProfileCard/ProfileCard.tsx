@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import { Currency, CurrencySelect } from 'entities/Currency';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
+import { Country } from 'shared/constants/common';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -19,6 +21,8 @@ interface ProfileCardProps {
     onChangeCity?: (value?: string) => void;
     onChangeUsername?: (value?: string) => void;
     onChangeAvatar?: (value?: string) => void;
+    onChangeCurrency?: (currency?: Currency) => void;
+    onChangeCountry?: (country?: Country) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -34,6 +38,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeCity,
         onChangeUsername,
         onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry,
     } = props;
     const { t } = useTranslation();
 
@@ -73,43 +79,49 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <Input
                     value={data?.firstName}
                     placeholder={t('Ваше имя', { ns: 'profile' })}
-                    className={cls.input}
                     onChange={onChangeFirstName}
+                    className={cls.input}
                     readonly={readonly}
                 />
                 <Input
                     value={data?.lastName}
                     placeholder={t('Ваша фамилия', { ns: 'profile' })}
-                    className={cls.input}
                     onChange={onChangeLastName}
+                    className={cls.input}
                     readonly={readonly}
                 />
                 <Input
                     value={data?.age}
                     placeholder={t('Возраст', { ns: 'profile' })}
-                    className={cls.input}
                     onChange={onChangeAge}
+                    className={cls.input}
                     readonly={readonly}
                 />
                 <Input
                     value={data?.city}
                     placeholder={t('Город', { ns: 'profile' })}
-                    className={cls.input}
                     onChange={onChangeCity}
+                    className={cls.input}
                     readonly={readonly}
                 />
                 <Input
                     value={data?.username}
                     placeholder={t('Псевдоним', { ns: 'profile' })}
-                    className={cls.input}
                     onChange={onChangeUsername}
+                    className={cls.input}
                     readonly={readonly}
                 />
                 <Input
                     value={data?.avatar}
                     placeholder={t('Ссылка на аватар', { ns: 'profile' })}
-                    className={cls.input}
                     onChange={onChangeAvatar}
+                    className={cls.input}
+                    readonly={readonly}
+                />
+                <CurrencySelect
+                    value={data?.currency}
+                    onChange={onChangeCurrency}
+                    className={cls.input}
                     readonly={readonly}
                 />
             </div>

@@ -1,3 +1,4 @@
+import { Currency } from 'entities/Currency';
 import {
     fetchProfileData, getProfileError,
     getProfileForm,
@@ -58,6 +59,10 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({ avatar: value || '' }));
     }, [dispatch]);
 
+    const onChangeCurrency = useCallback((currency?: Currency) => {
+        dispatch(profileActions.updateProfile({ currency }));
+    }, [dispatch]);
+
     return (
         <DynamicReducerLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
@@ -73,6 +78,7 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
                     onChangeCity={onChangeCity}
                     onChangeUsername={onChangeUsername}
                     onChangeAvatar={onChangeAvatar}
+                    onChangeCurrency={onChangeCurrency}
                 />
             </div>
         </DynamicReducerLoader>
