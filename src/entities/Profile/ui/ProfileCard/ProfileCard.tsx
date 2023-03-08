@@ -6,6 +6,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
 import { Country } from 'shared/constants/common';
+import { CountrySelect } from 'entities/Country';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -121,6 +122,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <CurrencySelect
                     value={data?.currency}
                     onChange={onChangeCurrency}
+                    className={cls.input}
+                    readonly={readonly}
+                />
+                <CountrySelect
+                    value={data?.country}
+                    onChange={onChangeCountry}
                     className={cls.input}
                     readonly={readonly}
                 />
