@@ -12,6 +12,7 @@ import {
     profileActions,
     ProfileCard,
     profileReducer,
+    ValidateProfileError,
 } from 'entities/Profile';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
@@ -34,6 +35,19 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
     const readonly = useSelector(getProfileReadonly);
     const error = useSelector(getProfileError);
     const validateErrors = useSelector(getProfileValidateErrors);
+
+    const validateErrorTranslates = {
+        [ValidateProfileError.SERVER_ERROR]:
+            t('Серверная ошибка при сохранении', { ns: 'profile' }),
+        [ValidateProfileError.NO_DATA]:
+            t('Данные не указаны', { ns: 'profile' }),
+        [ValidateProfileError.INCORRECT_USER_DATA]:
+            t('Имя, фамилия и псевдоним обязательны', { ns: 'profile' }),
+        [ValidateProfileError.INCORRECT_AGE_DATA]:
+            t('Некорректный возраст', { ns: 'profile' }),
+        [ValidateProfileError.INCORRECT_LOCATION_DATA]:
+            t('Укажите регион и город', { ns: 'profile' }),
+    };
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -76,7 +90,11 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
             <div className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
                 {validateErrors?.length && validateErrors.map((err) => (
-                    <Text variant={TextVariant.ERROR} text={err} key={err} />
+                    <Text
+                        variant={TextVariant.ERROR}
+                        text={validateErrorTranslates[err]}
+                        key={err}
+                    />
                 ))}
                 <ProfileCard
                     data={formData}

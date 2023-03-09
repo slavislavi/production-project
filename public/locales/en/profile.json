@@ -1,15 +1,20 @@
 {
-  "Валюта": "",
+  "Валюта": "Currency",
   "Ваша фамилия": "Your surname",
   "Ваше имя": "Your name",
   "Возраст": "Age",
   "Город": "City",
+  "Данные не указаны": "Data not specified",
+  "Имя, фамилия и псевдоним обязательны": "Firstname, lastname and username are required",
+  "Некорректный возраст": "Incorrect age value",
   "Отменить": "Cancel",
   "Профиль": "Profile",
   "Псевдоним": "Username",
   "Редактировать": "Edit",
+  "Серверная ошибка при сохранении": "Server error on save",
   "Сохранить": "Save",
   "Ссылка на аватар": "Avatar URL",
   "Страна": "Country",
-  "Страница профиля": "Profile page"
+  "Страница профиля": "Profile page",
+  "Укажите регион и город": "Specify region and city"
 }
