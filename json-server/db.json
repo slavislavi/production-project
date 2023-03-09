@@ -1,38 +1,38 @@
 {
-    "posts": [
-        {
-            "id": "1",
-            "title": "json-server",
-            "userId": "1"
-        },
-        {
-            "id": "2",
-            "title": "json-server",
-            "userId": "2"
-        }
-    ],
-    "comments": [
-        {
-            "id": "1",
-            "body": "some comment",
-            "postId": "1"
-        }
-    ],
-    "users": [
-        {
-            "id": "1",
-            "username": "admin",
-            "password": "123"
-        }
-    ],
-    "profile": {
-        "firstName": "John",
-        "lastName": "Connor",
-        "age": "36",
-        "currency": "BYN",
-        "country": "Belarus",
-        "city": "Minsk",
-        "username": "admin",
-        "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": "2"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "firstName": "John",
+    "lastName": "Connor",
+    "age": "36",
+    "currency": "USD",
+    "country": "Belarus",
+    "city": "Minsk",
+    "username": "admin",
+    "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
+  }
 }
