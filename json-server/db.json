@@ -28,7 +28,7 @@
   "profile": {
     "firstName": "John",
     "lastName": "Connor",
-    "age": "36",
+    "age": 36,
     "currency": "USD",
     "country": "Belarus",
     "city": "Minsk",
