@@ -26,12 +26,12 @@
     }
   ],
   "profile": {
-    "firstName": "John",
-    "lastName": "Connor",
+    "firstName": "Джон",
+    "lastName": "Коннор",
     "age": 36,
-    "currency": "EUR",
-    "country": "United Kingdom",
-    "city": "Minsk",
+    "currency": "BYN",
+    "country": "Belarus",
+    "city": "Минск",
     "username": "admin",
     "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
   }
