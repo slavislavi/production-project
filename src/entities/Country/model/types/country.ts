@@ -10,4 +10,8 @@ export enum Country {
     JP = 'Japan',
     CA = 'Canada',
     AE = 'UAE',
+    DE = 'Germany',
+    ES = 'Spain',
+    FR = 'France',
+    IN = 'India',
 }
