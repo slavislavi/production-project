@@ -1,6 +1,5 @@
 import {
     DefinePlugin,
-    HotModuleReplacementPlugin,
     ProgressPlugin,
     WebpackPluginInstance,
 } from 'webpack';
@@ -32,7 +31,6 @@ export function buildPlugins({
     ];
 
     if (isDev) {
-        plugins.push(new HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
     }
 
