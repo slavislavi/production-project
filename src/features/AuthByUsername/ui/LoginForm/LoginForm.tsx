@@ -52,7 +52,7 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
             reducers={initialReducers}
             removeAfterUnmount
         >
-            <div className={classNames(cls.LoginForm, {}, [className])}>
+            <div className={classNames(cls.loginForm, {}, [className])}>
                 <Text title={t('Авторизация')} />
                 {error && <Text text={t('Неверный логин или пароль')} variant={TextVariant.ERROR} />}
                 <Input

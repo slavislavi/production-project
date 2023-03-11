@@ -45,7 +45,7 @@ export const Button = memo(({
     return (
         <button
             type="button"
-            className={classNames(cls.Button, mods, [className])}
+            className={classNames(cls.button, mods, [className])}
             disabled={disabled}
             {...rest}
         >

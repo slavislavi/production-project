@@ -15,7 +15,7 @@ export const PageError = ({ className }: PageErrorProps) => {
     };
 
     return (
-        <div className={classNames(cls.PageError, {}, [className])}>
+        <div className={classNames(cls.pageError, {}, [className])}>
             <p>{t('Произошла непредвиденная ошибка', { ns: 'errors' })}</p>
             <Button onClick={reloadPage}>{t('Обновить страницу', { ns: 'errors' })}</Button>
         </div>

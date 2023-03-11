@@ -24,7 +24,7 @@ export const Avatar = memo(({
             src={src}
             alt={alt}
             style={styles}
-            className={classNames(cls.Avatar, mods, [className])}
+            className={classNames(cls.avatar, mods, [className])}
         />
     );
 });
