@@ -12,7 +12,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
 
     return (
         <div className={classNames(cls.articleDetails, {}, [className])}>
-            {/* children */}
+            {t('О статье', { ns: 'articleDetails' })}
         </div>
     );
 };
