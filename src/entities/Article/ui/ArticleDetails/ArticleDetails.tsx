@@ -5,6 +5,7 @@ import { fetchArticleById } from 'entities/Article/model/services/fetchArticleBy
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
 import {
@@ -44,7 +45,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         );
     } else if (error) {
         content = (
-            <div>{error}</div>
+            <Text
+                align={TextAlign.CENTER}
+                variant={TextVariant.ERROR}
+                title={t('Произошла ошибка при загрузке статьи', { ns: 'errors' })}
+            />
         );
     } else {
         <div>{t('О статье', { ns: 'articleDetails' })}</div>;
