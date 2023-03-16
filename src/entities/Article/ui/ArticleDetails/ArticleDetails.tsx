@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { fetchArticleById } from 'entities/Article/model/services/fetchArticleById/fetchArticleById';
@@ -13,6 +13,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
 import {
@@ -20,6 +21,9 @@ import {
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -37,6 +41,19 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const article = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
+
+    const renderBlock = useCallback((block: ArticleBlock) => {
+        switch (block.type) {
+        case ArticleBlockType.CODE:
+            return <ArticleCodeBlockComponent />;
+        case ArticleBlockType.IMAGE:
+            return <ArticleImageBlockComponent />;
+        case ArticleBlockType.TEXT:
+            return <ArticleTextBlockComponent />;
+        default:
+            return null;
+        }
+    }, []);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -88,6 +105,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     <Icon Svg={CalendarIcon} className={cls.icon} />
                     <Text text={article?.createdAt} />
                 </div>
+                {article?.blocks.map(renderBlock)}
             </>
         );
     }
