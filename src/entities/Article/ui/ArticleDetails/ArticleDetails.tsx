@@ -5,7 +5,9 @@ import { fetchArticleById } from 'entities/Article/model/services/fetchArticleBy
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
+import {
+    Text, TextAlign, TextSize, TextVariant,
+} from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
@@ -75,13 +77,14 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 <Text
                     title={article?.title}
                     text={article?.subtitle}
+                    size={TextSize.L}
                 />
                 <div className={cls.articleInfo}>
-                    <EyeIcon />
+                    <EyeIcon className={cls.icon} />
                     <Text text={String(article?.views)} />
                 </div>
                 <div className={cls.articleInfo}>
-                    <CalendarIcon />
+                    <CalendarIcon className={cls.icon} />
                     <Text text={article?.createdAt} />
                 </div>
             </>
