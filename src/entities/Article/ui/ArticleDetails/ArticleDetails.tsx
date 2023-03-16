@@ -7,6 +7,9 @@ import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/Dynami
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextAlign, TextVariant } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import cls from './ArticleDetails.module.scss';
 import {
@@ -59,7 +62,27 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             />
         );
     } else {
-        <div>{t('О статье', { ns: 'articleDetails' })}</div>;
+        content = (
+            <>
+                <Avatar
+                    size={200}
+                    src={article?.img}
+                    className={cls.avatar}
+                />
+                <Text
+                    title={article?.title}
+                    text={article?.subtitle}
+                />
+                <div>
+                    <EyeIcon />
+                    <Text text={String(article?.views)} />
+                </div>
+                <div>
+                    <CalendarIcon />
+                    <Text text={article?.createdAt} />
+                </div>
+            </>
+        );
     }
 
     return (

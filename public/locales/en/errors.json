@@ -4,7 +4,7 @@
   "Попробуйте обновить страницу": "Try to refresh the page",
   "Произошла непредвиденная ошибка": "Unexpected error",
   "Произошла ошибка при загрузке профиля": "An error occurred while loading the profile",
-  "Страница не найдена": "Page not found",
+  "Произошла ошибка при загрузке статьи": "An error occurred while loading the article",
   "Статья не найдена": "Article not found",
-  "Произошла ошибка при загрузке статьи": "An error occurred while loading the article"
+  "Страница не найдена": "Page not found"
 }
