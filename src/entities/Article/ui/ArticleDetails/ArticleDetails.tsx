@@ -64,20 +64,23 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     } else {
         content = (
             <>
-                <Avatar
-                    size={200}
-                    src={article?.img}
-                    className={cls.avatar}
-                />
+                <div className={cls.avatarWrapper}>
+                    <Avatar
+                        size={200}
+                        src={article?.img}
+                        className={cls.avatar}
+                    />
+                </div>
+
                 <Text
                     title={article?.title}
                     text={article?.subtitle}
                 />
-                <div>
+                <div className={cls.articleInfo}>
                     <EyeIcon />
                     <Text text={String(article?.views)} />
                 </div>
-                <div>
+                <div className={cls.articleInfo}>
                     <CalendarIcon />
                     <Text text={article?.createdAt} />
                 </div>
