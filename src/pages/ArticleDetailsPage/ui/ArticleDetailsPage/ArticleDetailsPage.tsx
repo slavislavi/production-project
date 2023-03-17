@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
@@ -5,8 +6,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
-import { articleDetailsCommentsReducer } from '../../model/slice/articleDetailsCommentsSlice';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -20,6 +25,13 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const { id } = useParams<{ id: string }>();
+    const dispatch = useAppDispatch();
+    const comments = useSelector(getArticleComments.selectAll);
+    const isLoadingComments = useSelector(getArticleCommentsIsLoading);
+
+    useInitialEffect(() => {
+        dispatch(fetchCommentsByArticleId(id));
+    });
 
     if (!id) {
         return (
@@ -38,7 +50,8 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     title={t('Комментарии', { ns: 'articleDetails' })}
                 />
                 <CommentList
-                    comments={[]}
+                    isLoading={isLoadingComments}
+                    comments={comments}
                 />
             </div>
         </DynamicReducerLoader>
