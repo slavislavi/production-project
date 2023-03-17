@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text } from 'shared/ui/Text/Text';
+import { CommentList } from 'entities/Comment';
 import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticleDetailsPageProps {
@@ -16,7 +18,7 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     if (!id) {
         return (
             <div className={classNames(cls.articleDetailsPage, {}, [className])}>
-                {t('Статья не найдена', 'errors')}
+                {t('Статья не найдена', { ns: 'errors' })}
             </div>
         );
     }
@@ -24,6 +26,8 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <div className={classNames(cls.articleDetailsPage, {}, [className])}>
             <ArticleDetails id={id} />
+            <Text title={t('Комментарии', { ns: 'articleDetails' })} />
+            <CommentList />
         </div>
     );
 };
