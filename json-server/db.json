@@ -93,8 +93,17 @@
     {
       "id": "1",
       "username": "admin",
-      "password": "123"
-    }
+      "password": "123",
+      "role": "ADMIN",
+      "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
+    },
+    {
+        "id": "2",
+        "username": "user",
+        "password": "123",
+        "role": "USER",
+        "avatar": "https://i1.sndcdn.com/artworks-REo13tGwCqLfRrc2-Uexthw-t500x500.jpg"
+      }
   ],
   "profile": {
     "firstName": "Джон",
