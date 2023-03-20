@@ -122,6 +122,7 @@
     ],
     "profile": [
         {
+            "id": "1",
             "firstName": "Джон",
             "lastName": "Коннор",
             "age": 36,
@@ -132,6 +133,7 @@
             "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
         },
         {
+            "id": "2",
             "firstName": "Иван",
             "lastName": "Канарейкин",
             "age": 24,
