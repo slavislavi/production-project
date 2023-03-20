@@ -6,13 +6,13 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
-import { sendComment } from '../../model/services/sendComment/sendComment';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentFormSlice';
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
 
 interface AddCommentFormProps {
     className?: string;
+    onSendComment: (text: string) => void;
 }
 
 const reducers: ReducersList = {
@@ -20,7 +20,7 @@ const reducers: ReducersList = {
 };
 
 export const AddCommentForm = (props: AddCommentFormProps) => {
-    const { className } = props;
+    const { className, onSendComment } = props;
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
     const error = useSelector(getAddCommentFormError);
@@ -30,9 +30,10 @@ export const AddCommentForm = (props: AddCommentFormProps) => {
         dispatch(addCommentFormActions.setText(value));
     }, [dispatch]);
 
-    const onSendComment = useCallback(() => {
-        dispatch(sendComment());
-    }, [dispatch]);
+    const onSendHandler = useCallback(() => {
+        onSendComment(text || '');
+        onCommentTextChange('');
+    }, [onCommentTextChange, onSendComment, text]);
 
     return (
         <DynamicReducerLoader reducers={reducers}>
@@ -44,7 +45,7 @@ export const AddCommentForm = (props: AddCommentFormProps) => {
                     onChange={onCommentTextChange}
                 />
                 <Button
-                    onClick={onSendComment}
+                    onClick={onSendHandler}
                     variant={ButtonVariant.OUTLINED}
                 >
                     {t('Отправить', { ns: 'articleDetails' })}
