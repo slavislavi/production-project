@@ -33,7 +33,7 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    if (!id) {
+    if (!id && __PROJECT__ !== 'storybook') { // todo: delete 2nd condition and {id || '1'}
         return (
             <div className={classNames(cls.articleDetailsPage, {}, [className])}>
                 {t('Статья не найдена', { ns: 'errors' })}
@@ -44,7 +44,7 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <DynamicReducerLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(cls.articleDetailsPage, {}, [className])}>
-                <ArticleDetails id={id} />
+                <ArticleDetails id={id || '1'} />
                 <Text
                     className={cls.commentTitle}
                     title={t('Комментарии', { ns: 'articleDetails' })}
