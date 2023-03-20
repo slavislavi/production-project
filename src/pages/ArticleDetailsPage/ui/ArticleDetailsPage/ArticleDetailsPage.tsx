@@ -8,6 +8,7 @@ import { CommentList } from 'entities/Comment';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AddCommentForm } from 'features/AddCommentForm';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
@@ -42,13 +43,14 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     }
 
     return (
-        <DynamicReducerLoader reducers={reducers} removeAfterUnmount>
+        <DynamicReducerLoader reducers={reducers}>
             <div className={classNames(cls.articleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id || '1'} />
                 <Text
                     className={cls.commentTitle}
                     title={t('Комментарии', { ns: 'articleDetails' })}
                 />
+                <AddCommentForm />
                 <CommentList
                     isLoading={isLoadingComments}
                     comments={comments}

@@ -48,10 +48,7 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     }, [dispatch, onSuccess, password, username]);
 
     return (
-        <DynamicReducerLoader
-            reducers={initialReducers}
-            removeAfterUnmount
-        >
+        <DynamicReducerLoader reducers={initialReducers}>
             <div className={classNames(cls.loginForm, {}, [className])}>
                 <Text title={t('Авторизация')} />
                 {error && <Text text={t('Неверный логин или пароль')} variant={TextVariant.ERROR} />}

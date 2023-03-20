@@ -91,7 +91,7 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
     }, [dispatch]);
 
     return (
-        <DynamicReducerLoader reducers={reducers} removeAfterUnmount>
+        <DynamicReducerLoader reducers={reducers}>
             <div className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
                 {validateErrors?.length && validateErrors.map((err) => (
