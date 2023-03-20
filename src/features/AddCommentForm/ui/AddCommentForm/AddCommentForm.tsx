@@ -6,6 +6,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
+import { sendComment } from '../../model/services/sendComment/sendComment';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slice/addCommentFormSlice';
 import { getAddCommentFormError, getAddCommentFormText } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
@@ -29,6 +30,10 @@ export const AddCommentForm = (props: AddCommentFormProps) => {
         dispatch(addCommentFormActions.setText(value));
     }, [dispatch]);
 
+    const onSendComment = useCallback(() => {
+        dispatch(sendComment());
+    }, [dispatch]);
+
     return (
         <DynamicReducerLoader reducers={reducers}>
             <div className={classNames(cls.addCommentForm, {}, [className])}>
@@ -38,7 +43,13 @@ export const AddCommentForm = (props: AddCommentFormProps) => {
                     value={text}
                     onChange={onCommentTextChange}
                 />
-                <Button variant={ButtonVariant.OUTLINED}>{t('Отправить', { ns: 'articleDetails' })}</Button>
+                <Button
+                    onClick={onSendComment}
+                    variant={ButtonVariant.OUTLINED}
+                >
+                    {t('Отправить', { ns: 'articleDetails' })}
+
+                </Button>
             </div>
         </DynamicReducerLoader>
     );
