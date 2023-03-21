@@ -6,7 +6,7 @@ import { getUserAuthData } from 'entities/User';
 import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 export const addCommentToArticle = createAsyncThunk<Comment, string, ThunkConfig<string>>(
-    'articleDetails/addCommentToArticle',
+    'articleDetailsPage/addCommentToArticle',
     async (text, thunkApi) => {
         const {
             extra, dispatch, rejectWithValue, getState,
