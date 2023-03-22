@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -10,6 +10,8 @@ import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/Dynami
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
+import { Button, ButtonVariant } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { addCommentToArticle } from '../../model/services/addCommentToArticle/addCommentToArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
@@ -31,6 +33,11 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const isLoadingComments = useSelector(getArticleCommentsIsLoading);
+    const navigate = useNavigate();
+
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentToArticle(text));
@@ -51,6 +58,9 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <DynamicReducerLoader reducers={reducers}>
             <div className={classNames(cls.articleDetailsPage, {}, [className])}>
+                <Button variant={ButtonVariant.OUTLINED} onClick={onBackToList}>
+                    {t('Назад к списку', { ns: 'articleDetails' })}
+                </Button>
                 <ArticleDetails id={id || '1'} />
                 <Text
                     className={cls.commentTitle}
