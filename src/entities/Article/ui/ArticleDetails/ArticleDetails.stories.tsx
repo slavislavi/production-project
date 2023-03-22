@@ -20,7 +20,12 @@ const article: Article = {
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
-    type: [ArticleType.IT],
+    user: {
+        id: '1',
+        username: 'notorious',
+        avatar: 'https://avatarko.ru/img/kartinka/10/film_9969.jpg',
+    },
+    type: [ArticleType.IT, ArticleType.MEDICINE, ArticleType.FINANCES],
     blocks: [
         {
             id: '1',

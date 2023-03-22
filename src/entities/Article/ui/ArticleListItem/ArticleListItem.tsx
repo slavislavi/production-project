@@ -59,7 +59,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     )}
                     <div className={cls.footer}>
                         <Button onClick={onOpenArticle} variant={ButtonVariant.OUTLINED}>
-                            {t('Читать далее...', { ns: 'articles' })}
+                            {t('Читать далее', { ns: 'articles' })}
                         </Button>
                         {views}
                     </div>

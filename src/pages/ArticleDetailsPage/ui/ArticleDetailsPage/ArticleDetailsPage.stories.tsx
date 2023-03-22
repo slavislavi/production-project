@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Theme } from 'app/providers/ThemeProvider';
 import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleDetailsPage } from './ArticleDetailsPage';
 
 export default {
@@ -24,6 +26,7 @@ const article: Article = {
     user: {
         id: '1',
         username: 'notorious',
+        avatar: 'https://avatarko.ru/img/kartinka/10/film_9969.jpg',
     },
     blocks: [
         {
@@ -59,3 +62,19 @@ Normal.decorators = [StoreDecorator({
         data: article,
     },
 })];
+
+export const Dark = Template.bind({});
+Dark.args = {};
+Dark.decorators = [StoreDecorator({
+    articleDetails: {
+        data: article,
+    },
+}), ThemeDecorator(Theme.DARK)];
+
+export const Orange = Template.bind({});
+Orange.args = {};
+Orange.decorators = [StoreDecorator({
+    articleDetails: {
+        data: article,
+    },
+}), ThemeDecorator(Theme.ORANGE)];
