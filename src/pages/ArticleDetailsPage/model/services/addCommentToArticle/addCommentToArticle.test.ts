@@ -1,28 +1,6 @@
-import { Article } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { mockArticle } from 'entities/Article/mocks/data.mock';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { addCommentToArticle } from './addCommentToArticle';
-
-const article: Article = {
-    id: '1',
-    title: 'Redux-toolkit types',
-    subtitle: 'Some issues that we can faced with',
-    img: 'url',
-    views: 333,
-    createdAt: '24.02.2023',
-    type: [ArticleType.IT],
-    blocks: [
-        {
-            id: '1',
-            type: ArticleBlockType.TEXT,
-            title: 'Some title',
-            paragraphs: [
-                'Lorem ipsum',
-                'Tutorial infinity',
-            ],
-        },
-    ],
-};
 
 const user = {
     authData: {
@@ -51,7 +29,7 @@ describe('addCommentToArticle API service', () => {
         const thunk = new TestAsyncThunk(addCommentToArticle, {
             user,
             articleDetails: {
-                data: article,
+                data: mockArticle,
             },
         });
         thunk.api.post.mockReturnValue(Promise.resolve({ data }));
@@ -66,7 +44,7 @@ describe('addCommentToArticle API service', () => {
         const thunk = new TestAsyncThunk(addCommentToArticle, {
             user,
             articleDetails: {
-                data: article,
+                data: mockArticle,
             },
         });
         thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));

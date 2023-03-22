@@ -18,6 +18,11 @@ const data: Article = {
             paragraphs: ['lorem ipsum dolores'],
         },
     ],
+    user: {
+        id: '1',
+        username: 'notorious',
+        avatar: 'https://avatarko.ru/img/kartinka/10/film_9969.jpg',
+    },
 };
 
 describe('articleDetailsSlice', () => {
