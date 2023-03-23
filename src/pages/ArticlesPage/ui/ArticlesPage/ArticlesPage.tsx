@@ -38,6 +38,7 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchArticlesList());
+        dispatch(articlesPageActions.initState());
     });
 
     return (
