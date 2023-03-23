@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -29,7 +29,7 @@ interface ProfilePageProps {
     className?: string;
 }
 
-export const ProfilePage = ({ className }: ProfilePageProps) => {
+export const ProfilePage = memo(({ className }: ProfilePageProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
@@ -118,4 +118,4 @@ export const ProfilePage = ({ className }: ProfilePageProps) => {
             </div>
         </DynamicReducerLoader>
     );
-};
+});

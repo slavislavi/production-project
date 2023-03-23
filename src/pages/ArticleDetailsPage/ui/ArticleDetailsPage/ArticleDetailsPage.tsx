@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +26,7 @@ const reducers: ReducersList = {
     articleDetailsComments: articleDetailsCommentsReducer,
 };
 
-export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
+export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const { id } = useParams<{ id: string }>();
@@ -75,4 +75,4 @@ export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         </DynamicReducerLoader>
 
     );
-};
+});
