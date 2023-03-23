@@ -1,4 +1,4 @@
-import { ArticleList, ArticleView } from 'entities/Article';
+import { ArticleList } from 'entities/Article';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,11 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import {
+    getArticlesPageError,
+    getArticlesPageIsLoading,
+    getArticlesPageView,
+} from '../../model/selectors/articlesPage';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
@@ -23,6 +28,9 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
+    const isLoading = useSelector(getArticlesPageIsLoading);
+    const view = useSelector(getArticlesPageView);
+    const error = useSelector(getArticlesPageError);
 
     useInitialEffect(() => {
         dispatch(fetchArticlesList());
@@ -32,9 +40,9 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
         <DynamicReducerLoader reducers={reducers}>
             <div className={classNames(cls.articlesPage, {}, [className])}>
                 <ArticleList
-                    isLoading={false}
-                    view={ArticleView.BIG}
-                    articles={[]}
+                    isLoading={isLoading}
+                    view={view}
+                    articles={articles}
                 />
             </div>
         </DynamicReducerLoader>
