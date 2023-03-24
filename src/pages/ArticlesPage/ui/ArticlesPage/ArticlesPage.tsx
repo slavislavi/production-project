@@ -7,11 +7,10 @@ import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/Dynami
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
     getArticlesPageError,
-    getArticlesPageHasMore,
     getArticlesPageIsLoading,
-    getArticlesPageNumber,
     getArticlesPageView,
 } from '../../model/selectors/articlesPage';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
@@ -33,8 +32,6 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
-    const page = useSelector(getArticlesPageNumber);
-    const hasMore = useSelector(getArticlesPageHasMore);
     const error = useSelector(getArticlesPageError);
 
     const onChangeView = useCallback((view: ArticleView) => {
@@ -42,13 +39,8 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     }, [dispatch]);
 
     const onLoadNextPart = useCallback(() => {
-        if (hasMore && !isLoading) {
-            dispatch(articlesPageActions.setPage(page + 1));
-            dispatch(fetchArticlesList({
-                page: page + 1,
-            }));
-        }
-    }, [dispatch, hasMore, isLoading, page]);
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
 
     useInitialEffect(() => {
         dispatch(articlesPageActions.initState());
