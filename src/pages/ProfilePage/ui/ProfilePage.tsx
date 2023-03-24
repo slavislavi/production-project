@@ -20,6 +20,7 @@ import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/Dynami
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextVariant } from 'shared/ui/Text/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -92,7 +93,7 @@ export const ProfilePage = memo(({ className }: ProfilePageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
                 {validateErrors?.length && validateErrors.map((err) => (
                     <Text
@@ -115,7 +116,7 @@ export const ProfilePage = memo(({ className }: ProfilePageProps) => {
                     onChangeCurrency={onChangeCurrency}
                     onChangeCountry={onChangeCountry}
                 />
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 });

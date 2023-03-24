@@ -6,6 +6,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
@@ -45,14 +46,14 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <div className={classNames(cls.articlesPage, {}, [className])}>
+            <Page className={classNames(cls.articlesPage, {}, [className])}>
                 <ArticleViewSwitcher view={view} onViewClick={onChangeView} />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
                 />
-            </div>
+            </Page>
         </DynamicReducerLoader>
     );
 });

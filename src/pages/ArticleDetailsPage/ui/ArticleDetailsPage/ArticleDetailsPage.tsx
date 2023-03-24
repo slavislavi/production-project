@@ -12,6 +12,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { addCommentToArticle } from '../../model/services/addCommentToArticle/addCommentToArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
@@ -49,15 +50,15 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
 
     if (!id && __PROJECT__ !== 'storybook') { // todo: delete 2nd condition and {id || '1'}
         return (
-            <div className={classNames(cls.articleDetailsPage, {}, [className])}>
+            <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
                 {t('Статья не найдена', { ns: 'errors' })}
-            </div>
+            </Page>
         );
     }
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <div className={classNames(cls.articleDetailsPage, {}, [className])}>
+            <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
                 <Button variant={ButtonVariant.OUTLINED} onClick={onBackToList}>
                     {t('Назад к списку', { ns: 'articleDetails' })}
                 </Button>
@@ -71,7 +72,7 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
                     isLoading={isLoadingComments}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicReducerLoader>
 
     );
