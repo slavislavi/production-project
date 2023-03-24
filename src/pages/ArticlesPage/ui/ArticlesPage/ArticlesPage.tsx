@@ -9,7 +9,9 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { Page } from 'shared/ui/Page/Page';
 import {
     getArticlesPageError,
+    getArticlesPageHasMore,
     getArticlesPageIsLoading,
+    getArticlesPageNumber,
     getArticlesPageView,
 } from '../../model/selectors/articlesPage';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
@@ -31,11 +33,22 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
+    const page = useSelector(getArticlesPageNumber);
+    const hasMore = useSelector(getArticlesPageHasMore);
     const error = useSelector(getArticlesPageError);
 
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlesPageActions.setView(view));
     }, [dispatch]);
+
+    const onLoadNextPart = useCallback(() => {
+        if (hasMore && !isLoading) {
+            dispatch(articlesPageActions.setPage(page + 1));
+            dispatch(fetchArticlesList({
+                page: page + 1,
+            }));
+        }
+    }, [dispatch, hasMore, isLoading, page]);
 
     useInitialEffect(() => {
         dispatch(articlesPageActions.initState());
@@ -46,7 +59,10 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <Page className={classNames(cls.articlesPage, {}, [className])}>
+            <Page
+                className={classNames(cls.articlesPage, {}, [className])}
+                onScrollEnd={onLoadNextPart}
+            >
                 <ArticleViewSwitcher view={view} onViewClick={onChangeView} />
                 <ArticleList
                     isLoading={isLoading}
