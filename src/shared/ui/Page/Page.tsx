@@ -25,7 +25,7 @@ export const Page = memo((props: PageProps) => {
     return (
         <section
             ref={wrapperRef}
-            className={classNames(cls.Page, {}, [className])}
+            className={classNames(cls.page, {}, [className])}
         >
             {children}
             <div ref={triggerRef} />
