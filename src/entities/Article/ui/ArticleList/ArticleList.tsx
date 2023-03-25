@@ -13,6 +13,12 @@ interface ArticleListProps {
     view?: ArticleView;
 }
 
+const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
+    .fill(0)
+    .map((_, index) => (
+        <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
+    ));
+
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
         className,
@@ -21,12 +27,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.SMALL,
     } = props;
     const { t } = useTranslation();
-
-    const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
-        .fill(0)
-        .map((_, index) => (
-            <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
-        ));
 
     const renderArticles = (article: Article) => (
         <ArticleListItem

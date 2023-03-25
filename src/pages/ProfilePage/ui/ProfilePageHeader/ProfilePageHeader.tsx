@@ -43,7 +43,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         <div className={classNames(cls.profilePageHeader, {}, [className])}>
             <Text title={t('Профиль', { ns: 'profile' })} />
             {canEdit && (
-                <div className={cls.editBtnWrapper}>
+                <div className={cls.btnsWrapper}>
                     {readonly ? (
                         <Button
                             variant={ButtonVariant.OUTLINED}

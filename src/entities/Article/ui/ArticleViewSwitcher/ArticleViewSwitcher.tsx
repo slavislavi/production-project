@@ -4,7 +4,7 @@ import ListedIcon from 'shared/assets/icons/big_view.svg';
 import TiledIcon from 'shared/assets/icons/small_view.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
-import cls from './ArticleViewSelector.module.scss';
+import cls from './ArticleViewSwitcher.module.scss';
 import { ArticleView } from '../../model/types/article';
 
 interface ArticleViewSwitcherProps {
@@ -32,7 +32,7 @@ export const ArticleViewSwitcher = memo((props: ArticleViewSwitcherProps) => {
     };
 
     return (
-        <div className={classNames(cls.articleViewSelector, {}, [className])}>
+        <div className={classNames(cls.articleViewSwitcher, {}, [className])}>
             {viewTypes.map((viewType) => (
                 <Button
                     variant={ButtonVariant.CLEAR}
