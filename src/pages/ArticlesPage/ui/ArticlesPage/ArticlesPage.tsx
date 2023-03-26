@@ -10,6 +10,7 @@ import { Page } from 'shared/ui/Page/Page';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
     getArticlesPageError,
+    getArticlesPageInited,
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors/articlesPage';
@@ -32,6 +33,7 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
+    const inited = useSelector(getArticlesPageInited);
     const error = useSelector(getArticlesPageError);
 
     const onChangeView = useCallback((view: ArticleView) => {
@@ -43,10 +45,12 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        if (!inited) {
+            dispatch(articlesPageActions.initState());
+            dispatch(fetchArticlesList({
+                page: 1,
+            }));
+        }
     });
 
     return (
