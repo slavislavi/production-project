@@ -5,7 +5,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { ArticleViewSwitcher } from './ArticleViewSwitcher';
 
 export default {
-    title: 'entity/ArticleViewSwitcher',
+    title: 'entities/ArticleViewSwitcher',
     component: ArticleViewSwitcher,
     argTypes: {
         backgroundColor: { control: 'color' },

@@ -48,7 +48,7 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    if (!id && __PROJECT__ !== 'storybook') { // todo: delete 2nd condition and {id || '1'}
+    if (!id) {
         return (
             <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
                 {t('Статья не найдена', { ns: 'errors' })}
@@ -62,7 +62,7 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
                 <Button variant={ButtonVariant.OUTLINED} onClick={onBackToList}>
                     {t('Назад к списку', { ns: 'articleDetails' })}
                 </Button>
-                <ArticleDetails id={id || '1'} />
+                <ArticleDetails id={id} />
                 <Text
                     className={cls.commentTitle}
                     title={t('Комментарии', { ns: 'articleDetails' })}
