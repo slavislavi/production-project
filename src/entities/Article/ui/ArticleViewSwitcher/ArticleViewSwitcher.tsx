@@ -37,6 +37,7 @@ export const ArticleViewSwitcher = memo((props: ArticleViewSwitcherProps) => {
                 <Button
                     variant={ButtonVariant.CLEAR}
                     onClick={onClick(viewType.view)}
+                    key={viewType.view}
                 >
                     <Icon
                         Svg={viewType.icon}

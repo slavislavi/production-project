@@ -50,7 +50,7 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     });
 
     return (
-        <DynamicReducerLoader reducers={reducers}>
+        <DynamicReducerLoader reducers={reducers} removeAfterUnmount={false}>
             <Page
                 className={classNames(cls.articlesPage, {}, [className])}
                 onScrollEnd={onLoadNextPart}
