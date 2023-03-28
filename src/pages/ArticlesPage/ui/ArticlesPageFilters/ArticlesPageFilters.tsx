@@ -9,7 +9,9 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { SortOrder } from 'shared/types';
-import { getArticlesPageOrder, getArticlesPageSort, getArticlesPageView } from '../../model/selectors/articlesPage';
+import {
+    getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageView,
+} from '../../model/selectors/articlesPage';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 import cls from './ArticlesPageFilters.module.scss';
 
@@ -24,6 +26,7 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
     const view = useSelector(getArticlesPageView);
     const sort = useSelector(getArticlesPageSort);
     const order = useSelector(getArticlesPageOrder);
+    const search = useSelector(getArticlesPageSearch);
 
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlesPageActions.setView(view));
@@ -37,6 +40,10 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
         dispatch(articlesPageActions.setSort(newSort));
     }, [dispatch]);
 
+    const onChangeSearch = useCallback((search: string) => {
+        dispatch(articlesPageActions.setSearch(search));
+    }, [dispatch]);
+
     return (
         <div className={classNames('', {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -46,10 +53,17 @@ export const ArticlesPageFilters = (props: ArticlesPageFiltersProps) => {
                     onChangeOrder={onChangeOrder}
                     onChangeSort={onChangeSort}
                 />
-                <ArticleViewSwitcher view={view} onViewClick={onChangeView} />
+                <ArticleViewSwitcher
+                    view={view}
+                    onViewClick={onChangeView}
+                />
             </div>
             <Card className={cls.search}>
-                <Input placeholder={t('Поиск', { ns: 'articles' })} />
+                <Input
+                    placeholder={t('Поиск', { ns: 'articles' })}
+                    value={search}
+                    onChange={onChangeSearch}
+                />
             </Card>
         </div>
     );
