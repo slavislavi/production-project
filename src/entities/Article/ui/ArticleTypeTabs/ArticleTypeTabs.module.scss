@@ -1,3 +1,9 @@
 .articleTypeTabs {
+    display: flex;
+    flex-wrap: wrap;
     text-transform: uppercase;
+
+    div {
+        padding: 8px;
+    }
 }

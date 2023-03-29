@@ -17,23 +17,18 @@ export const initArticlesPage = createAsyncThunk<
             const inited = getArticlesPageInited(getState());
 
             if (!inited) {
-                const orderFromUrl = searchParams.get('order') as SortOrder;
-                const sortFromUrl = searchParams.get('sort') as ArticleSortField;
-                const searchFromUrl = searchParams.get('search');
-                const typeFromUrl = searchParams.get('type') as ArticleType;
-
-                if (orderFromUrl) {
-                    dispatch(articlesPageActions.setOrder(orderFromUrl));
-                }
-                if (sortFromUrl) {
-                    dispatch(articlesPageActions.setSort(sortFromUrl));
-                }
-                if (searchFromUrl) {
-                    dispatch(articlesPageActions.setSearch(searchFromUrl));
-                }
-                if (typeFromUrl) {
-                    dispatch(articlesPageActions.setType(typeFromUrl));
-                }
+                dispatch(
+                    articlesPageActions.setOrder(searchParams.get('order') as SortOrder ?? ''),
+                );
+                dispatch(
+                    articlesPageActions.setSort(searchParams.get('sort') as ArticleSortField ?? ''),
+                );
+                dispatch(
+                    articlesPageActions.setSearch(searchParams.get('search') ?? ''),
+                );
+                dispatch(
+                    articlesPageActions.setType(searchParams.get('type') as ArticleType ?? ''),
+                );
 
                 dispatch(articlesPageActions.initState());
                 dispatch(fetchArticlesList({}));
