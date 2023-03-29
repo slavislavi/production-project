@@ -1,4 +1,5 @@
 import { memo, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ArticleList } from 'entities/Article';
@@ -33,13 +34,14 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
+    const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     return (
