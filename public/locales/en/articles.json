@@ -1,4 +1,21 @@
 {
-  "Поиск": "Search",
-  "Читать далее": "Read more..."
+    "ALL": "all",
+    "IT": "it",
+    "SCIENCE": "science",
+    "ECONOMICS": "economics",
+    "MEDICINE": "medicine",
+    "SPORTS": "sports",
+    "POLITICS": "politics",
+    "PSYCHOLOGY": "psychology",
+    "FINANCES": "finances",
+    "Поиск": "Search",
+    "Сортировать по": "Sort by",
+    "Статьи не найдены": "No articles yet",
+    "Читать далее": "Read more...",
+    "возрастанию": "ascend",
+    "дате создания": "date",
+    "названию": "name",
+    "по": "by",
+    "просмотрам": "views",
+    "убыванию": "descend"
 }

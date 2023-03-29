@@ -1,8 +1,9 @@
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 import { ArticleType } from 'entities/Article';
+import cls from './ArticleTypeTabs.module.scss';
 
 interface ArticleTypeTabsProps {
     className?: string;
@@ -14,16 +15,10 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
     const { className, value, onChangeType } = props;
     const { t } = useTranslation();
 
-    const typeTabs = useMemo<TabItem[]>(() => [
-        {
-            value: ArticleType.ALL,
-            content: t('Все статьи', { ns: 'articles' }),
-        },
-        {
-            value: ArticleType.IT,
-            content: t('АйТи', { ns: 'articles' }),
-        },
-    ], [t]);
+    const typeTabs = Object.values(ArticleType).reduce((acc: TabItem[], cur) => ([
+        ...acc,
+        { value: cur, content: cur },
+    ]), []);
 
     const onTabClick = useCallback((tab: TabItem) => {
         onChangeType(tab.value as ArticleType);
@@ -34,7 +29,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
             tabs={typeTabs}
             value={value}
             onTabClick={onTabClick}
-            className={classNames('', {}, [className])}
+            className={classNames(cls.articleTypeTabs, {}, [className])}
         />
     );
 });
