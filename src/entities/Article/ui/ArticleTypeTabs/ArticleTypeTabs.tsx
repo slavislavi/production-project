@@ -17,7 +17,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
 
     const typeTabs = Object.values(ArticleType).reduce((acc: TabItem[], cur) => ([
         ...acc,
-        { value: cur, content: cur },
+        { value: cur, content: t(cur, { ns: 'articles' }) },
     ]), []);
 
     const onTabClick = useCallback((tab: TabItem) => {
