@@ -79,6 +79,7 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
                     articles={recommendations}
                     isLoading={isLoadingRecommends}
                     className={cls.recommendations}
+                    target="_blank"
                 />
                 <Text
                     className={cls.commentTitle}
