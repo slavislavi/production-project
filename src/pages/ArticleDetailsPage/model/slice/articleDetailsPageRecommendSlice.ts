@@ -9,7 +9,7 @@ const recommendsAdapter = createEntityAdapter<Article>({
 });
 
 export const getArticleRecommends = recommendsAdapter.getSelectors<StateSchema>(
-    (state) => state.articleDetailsRecommends || recommendsAdapter.getInitialState(),
+    (state) => state.articleDetailsPage?.recommends || recommendsAdapter.getInitialState(),
 );
 
 export const articleDetailsPageRecommendSlice = createSlice({

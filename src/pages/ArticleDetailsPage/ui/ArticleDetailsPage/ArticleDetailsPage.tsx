@@ -14,24 +14,21 @@ import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
 import { getArticleRecommendsIsLoading } from '../../model/selectors/recommendations';
-import {
-    articleDetailsPageRecommendReducer,
-    getArticleRecommends,
-} from '../../model/slice/articleDetailsPageRecommendSlice';
+import { getArticleRecommends } from '../../model/slice/articleDetailsPageRecommendSlice';
 import { addCommentToArticle } from '../../model/services/addCommentToArticle/addCommentToArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { fetchArticleRecommends } from '../../model/services/fetchArticleRecommends/fetchArticleRecommends';
+import { articleDetailsPageReducer } from '../../model/slice';
 
 interface ArticleDetailsPageProps {
     className?: string;
 }
 
 const reducers: ReducersList = {
-    articleDetailsComments: articleDetailsCommentsReducer,
-    articleDetailsRecommends: articleDetailsPageRecommendReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
