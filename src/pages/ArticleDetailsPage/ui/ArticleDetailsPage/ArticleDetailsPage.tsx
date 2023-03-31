@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails, ArticleList } from 'entities/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -10,8 +10,6 @@ import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/Dynami
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
-import { Button, ButtonVariant } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
 import { getArticleRecommendsIsLoading } from '../../model/selectors/recommendations';
 import { getArticleRecommends } from '../../model/slice/articleDetailsPageRecommendSlice';
@@ -22,6 +20,7 @@ import cls from './ArticleDetailsPage.module.scss';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { fetchArticleRecommends } from '../../model/services/fetchArticleRecommends/fetchArticleRecommends';
 import { articleDetailsPageReducer } from '../../model/slice';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -40,11 +39,6 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
     const isLoadingComments = useSelector(getArticleCommentsIsLoading);
     const recommendations = useSelector(getArticleRecommends.selectAll);
     const isLoadingRecommends = useSelector(getArticleRecommendsIsLoading);
-    const navigate = useNavigate();
-
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentToArticle(text));
@@ -66,9 +60,7 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
     return (
         <DynamicReducerLoader reducers={reducers}>
             <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-                <Button variant={ButtonVariant.OUTLINED} onClick={onBackToList}>
-                    {t('Назад к списку', { ns: 'articleDetails' })}
-                </Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <Text
                     className={cls.commentTitle}
