@@ -6,6 +6,9 @@ import { getUserAuthData, userActions } from 'entities/User';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AppLink, AppLinkVariant } from 'shared/ui/AppLink/AppLink';
+import { Text, TextVariant } from 'shared/ui/Text/Text';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -22,7 +25,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         setIsAuthModal(false);
     }, []);
 
-    const showModal = useCallback(() => {
+    const onShowModal = useCallback(() => {
         setIsAuthModal(true);
     }, []);
 
@@ -33,6 +36,18 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <header className={classNames(cls.navbar, {}, [className])}>
+                <Text
+                    className={cls.appName}
+                    title={t('Slavio App')}
+                    variant={TextVariant.INVERTED}
+                />
+                <AppLink
+                    to={RoutePath.article_create}
+                    theme={AppLinkVariant.SECONDARY}
+                    className={cls.createBtn}
+                >
+                    {t('Создать статью')}
+                </AppLink>
                 <Button
                     className={cls.links}
                     variant={ButtonVariant.CLEAR_INVERTED}
@@ -49,7 +64,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <Button
                 className={cls.links}
                 variant={ButtonVariant.CLEAR_INVERTED}
-                onClick={showModal}
+                onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>

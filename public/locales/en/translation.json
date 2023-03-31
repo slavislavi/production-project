@@ -1,10 +1,12 @@
 {
+  "Slavio App": "Slavio App",
   "Авторизация": "Sign Up Form",
   "Войти": "Sign In",
   "Выйти": "Sign Out",
   "Имя": "Name",
   "Неверный логин или пароль": "Invalid login or password",
   "Пароль": "Password",
+  "Создать статью": "Create an article",
   "Язык": "English",
   "Язык кратко": "En"
 }
