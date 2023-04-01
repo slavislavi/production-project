@@ -7,9 +7,6 @@
 Link to deploy: https://classy-unicorn-b695aa.netlify.app/
 
 
-<font color="green">
 На время разработки вход:
-
-login: admin
-password: 123
-</font>
+```login: admin```
+```password: 123```
