@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
-import { ArticleView } from 'entities/Article';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ArticleView } from '../../model/types/article';
 import { ArticleViewSwitcher } from './ArticleViewSwitcher';
 
 export default {
