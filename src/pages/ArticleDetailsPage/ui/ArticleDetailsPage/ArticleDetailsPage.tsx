@@ -11,6 +11,7 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 import { getArticleRecommendsIsLoading } from '../../model/selectors/recommendations';
 import { getArticleRecommends } from '../../model/slice/articleDetailsPageRecommendSlice';
 import { addCommentToArticle } from '../../model/services/addCommentToArticle/addCommentToArticle';
@@ -60,29 +61,29 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
     return (
         <DynamicReducerLoader reducers={reducers}>
             <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-                <ArticleDetailsPageHeader />
-                <ArticleDetails id={id} />
-                <Text
-                    className={cls.commentTitle}
-                    size={TextSize.L}
-                    title={t('Рекомендуем', { ns: 'articleDetails' })}
-                />
-                <ArticleList
-                    articles={recommendations}
-                    isLoading={isLoadingRecommends}
-                    className={cls.recommendations}
-                    target="_blank"
-                />
-                <Text
-                    className={cls.commentTitle}
-                    size={TextSize.L}
-                    title={t('Комментарии', { ns: 'articleDetails' })}
-                />
-                <AddCommentForm onSendComment={onSendComment} />
-                <CommentList
-                    isLoading={isLoadingComments}
-                    comments={comments}
-                />
+                <VStack gap="16" max>
+                    <ArticleDetailsPageHeader />
+                    <ArticleDetails id={id} />
+                    <Text
+                        size={TextSize.L}
+                        title={t('Рекомендуем', { ns: 'articleDetails' })}
+                    />
+                    <ArticleList
+                        articles={recommendations}
+                        isLoading={isLoadingRecommends}
+                        className={cls.recommendations}
+                        target="_blank"
+                    />
+                    <Text
+                        size={TextSize.L}
+                        title={t('Комментарии', { ns: 'articleDetails' })}
+                    />
+                    <AddCommentForm onSendComment={onSendComment} />
+                    <CommentList
+                        isLoading={isLoadingComments}
+                        comments={comments}
+                    />
+                </VStack>
             </Page>
         </DynamicReducerLoader>
 
