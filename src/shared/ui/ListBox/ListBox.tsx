@@ -80,7 +80,7 @@ export function ListBox(props: ListBoxProps) {
                                         },
                                     )}
                                 >
-                                    {selected && '✔️'}
+                                    {selected && <span className={cls.selected} />}
                                     {item.content}
                                 </li>
                             )}
