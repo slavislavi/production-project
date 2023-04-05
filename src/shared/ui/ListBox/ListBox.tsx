@@ -45,7 +45,11 @@ export function ListBox(props: ListBoxProps) {
 
     return (
         <HStack gap="4">
-            {label && <span>{`${label}>`}</span>}
+            {label && (
+                <span className={classNames(cls.label, { [cls.disabled]: readonly })}>
+                    {`${label}>`}
+                </span>
+            )}
             <HListBox
                 disabled={readonly}
                 as="div"
@@ -54,11 +58,11 @@ export function ListBox(props: ListBoxProps) {
                 onChange={onChange}
             >
                 <HListBox.Button disabled={readonly} className={cls.trigger}>
-                    <Button>
+                    <Button disabled={readonly}>
                         {value ?? defaultValue}
                     </Button>
                 </HListBox.Button>
-                <HListBox.Options className={cls.options}>
+                <HListBox.Options className={classNames(cls.options, {}, optionsClasses)}>
                     {items?.map((item) => (
                         <HListBox.Option
                             as={Fragment}

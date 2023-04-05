@@ -72,7 +72,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <VStack gap="8" max className={classNames(cls.profileCard, mods, [className])}>
             {data?.avatar && (
-                <HStack justify="center" max className={cls.avatarWrapper}>
+                <HStack justify="center" max>
                     <Avatar src={data?.avatar} />
                 </HStack>
             )}
@@ -80,54 +80,46 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 value={data?.firstName}
                 placeholder={t('Ваше имя', { ns: 'profile' })}
                 onChange={onChangeFirstName}
-                className={cls.input}
                 readonly={readonly}
             />
             <Input
                 value={data?.lastName}
                 placeholder={t('Ваша фамилия', { ns: 'profile' })}
                 onChange={onChangeLastName}
-                className={cls.input}
                 readonly={readonly}
             />
             <Input
                 value={data?.age}
                 placeholder={t('Возраст', { ns: 'profile' })}
                 onChange={onChangeAge}
-                className={cls.input}
                 readonly={readonly}
             />
             <Input
                 value={data?.city}
                 placeholder={t('Город', { ns: 'profile' })}
                 onChange={onChangeCity}
-                className={cls.input}
                 readonly={readonly}
             />
             <Input
                 value={data?.username}
                 placeholder={t('Псевдоним', { ns: 'profile' })}
                 onChange={onChangeUsername}
-                className={cls.input}
                 readonly={readonly}
             />
             <Input
                 value={data?.avatar}
                 placeholder={t('Ссылка на аватар', { ns: 'profile' })}
                 onChange={onChangeAvatar}
-                className={cls.input}
                 readonly={readonly}
             />
             <CurrencySelect
                 value={data?.currency}
                 onChange={onChangeCurrency}
-                className={cls.input}
                 readonly={readonly}
             />
             <CountrySelect
                 value={data?.country}
                 onChange={onChangeCountry}
-                className={cls.input}
                 readonly={readonly}
             />
         </VStack>
