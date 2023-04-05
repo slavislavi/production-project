@@ -11,7 +11,6 @@
 }
 
 .options {
-    width: 100%;
     background: var(--listbox-bg);
     position: absolute;
     z-index: var(--modal-z-index);
@@ -29,4 +28,8 @@
 
 .disabled {
     opacity: 0.7;
+}
+
+.optionsTop {
+    bottom: 100%;
 }
