@@ -28,6 +28,13 @@ Error.args = {
     variant: TextVariant.ERROR,
 };
 
+export const Inverted = Template.bind({});
+Inverted.args = {
+    title: 'Title Lorem ipsum',
+    text: 'Description text secondary',
+    variant: TextVariant.INVERTED,
+};
+
 export const OnlyTitle = Template.bind({});
 OnlyTitle.args = {
     title: 'Title Lorem ipsum',
