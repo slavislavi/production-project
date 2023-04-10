@@ -1,125 +1,28 @@
-import { memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import {
-    fetchProfileData, getProfileError,
-    getProfileForm,
-    getProfileIsLoading,
-    getProfileReadonly,
-    getProfileValidateErrors,
-    profileActions,
-    ProfileCard,
-    profileReducer,
-    ValidateProfileError,
-} from 'entities/Profile';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { DynamicReducerLoader, ReducersList } from 'shared/lib/components/DynamicReducerLoader/DynamicReducerLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextVariant } from 'shared/ui/Text/Text';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
 import { VStack } from 'shared/ui/Stack';
-import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { Text } from 'shared/ui/Text/Text';
+import { EditableProfileCard } from 'features/EditableProfileCard';
 
-const reducers: ReducersList = {
-    profile: profileReducer,
-};
 interface ProfilePageProps {
     className?: string;
 }
 
-export const ProfilePage = memo(({ className }: ProfilePageProps) => {
-    const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const formData = useSelector(getProfileForm);
-    const isLoading = useSelector(getProfileIsLoading);
-    const readonly = useSelector(getProfileReadonly);
-    const error = useSelector(getProfileError);
-    const validateErrors = useSelector(getProfileValidateErrors);
+export const ProfilePage = ({ className }: ProfilePageProps) => {
     const { id } = useParams<{ id: string }>();
+    const { t } = useTranslation();
 
-    const validateErrorTranslates = {
-        [ValidateProfileError.SERVER_ERROR]:
-            t('Серверная ошибка при сохранении', { ns: 'profile' }),
-        [ValidateProfileError.NO_DATA]:
-            t('Данные не указаны', { ns: 'profile' }),
-        [ValidateProfileError.INCORRECT_USER_DATA]:
-            t('Имя, фамилия и псевдоним обязательны', { ns: 'profile' }),
-        [ValidateProfileError.INCORRECT_AGE_DATA]:
-            t('Некорректный возраст', { ns: 'profile' }),
-        [ValidateProfileError.INCORRECT_LOCATION_DATA]:
-            t('Укажите регион и город', { ns: 'profile' }),
-    };
-
-    useInitialEffect(() => {
-        if (id) {
-            dispatch(fetchProfileData(id));
-        }
-    });
-
-    const onChangeFirstName = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ firstName: value || '' }));
-    }, [dispatch]);
-
-    const onChangeLastName = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ lastName: value || '' }));
-    }, [dispatch]);
-
-    const onChangeAge = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
-    }, [dispatch]);
-
-    const onChangeCity = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ city: value || '' }));
-    }, [dispatch]);
-
-    const onChangeUsername = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ username: value || '' }));
-    }, [dispatch]);
-
-    const onChangeAvatar = useCallback((value?: string) => {
-        dispatch(profileActions.updateProfile({ avatar: value || '' }));
-    }, [dispatch]);
-
-    const onChangeCurrency = useCallback((currency?: Currency) => {
-        dispatch(profileActions.updateProfile({ currency }));
-    }, [dispatch]);
-
-    const onChangeCountry = useCallback((country?: Country) => {
-        dispatch(profileActions.updateProfile({ country }));
-    }, [dispatch]);
+    if (!id) {
+        return <Text text={t('Профиль не найден', { ns: 'errors' })} />;
+    }
 
     return (
-        <DynamicReducerLoader reducers={reducers}>
-            <Page className={classNames('', {}, [className])}>
-                <VStack gap="16" max>
-                    <ProfilePageHeader />
-                    {validateErrors?.length && validateErrors.map((err) => (
-                        <Text
-                            variant={TextVariant.ERROR}
-                            text={validateErrorTranslates[err]}
-                            key={err}
-                        />
-                    ))}
-                    <ProfileCard
-                        data={formData}
-                        isLoading={isLoading}
-                        error={error}
-                        readonly={readonly}
-                        onChangeFirstName={onChangeFirstName}
-                        onChangeLastName={onChangeLastName}
-                        onChangeAge={onChangeAge}
-                        onChangeCity={onChangeCity}
-                        onChangeUsername={onChangeUsername}
-                        onChangeAvatar={onChangeAvatar}
-                        onChangeCurrency={onChangeCurrency}
-                        onChangeCountry={onChangeCountry}
-                    />
-                </VStack>
-            </Page>
-        </DynamicReducerLoader>
+        <Page className={classNames('', {}, [className])}>
+            <VStack gap="16" max>
+                <EditableProfileCard id={id} />
+            </VStack>
+        </Page>
     );
-});
+};

@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ValidateProfileError } from '../../types/profile';
+import { ValidateProfileError } from '../../types/EditableProfileCardSchema';
 import { getProfileValidateErrors } from './getProfileValidateErrors';
 
 describe('getProfileValidateErrors selector', () => {
@@ -7,13 +7,13 @@ describe('getProfileValidateErrors selector', () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
                 validateErrors: [
-                    ValidateProfileError.INCORRECT_AGE_DATA,
+                    ValidateProfileError.INCORRECT_AGE,
                     ValidateProfileError.SERVER_ERROR,
                 ],
             },
         };
         expect(getProfileValidateErrors(state as StateSchema)).toEqual([
-            ValidateProfileError.INCORRECT_AGE_DATA,
+            ValidateProfileError.INCORRECT_AGE,
             ValidateProfileError.SERVER_ERROR,
         ]);
     });

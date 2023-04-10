@@ -1,6 +1,6 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ValidateProfileError } from '../../types/profile';
+import { ValidateProfileError } from '../../types/EditableProfileCardSchema';
 import { validateProfileData } from './validateProfileData';
 
 const data = {
@@ -30,7 +30,7 @@ describe('validateProfileData API service', () => {
         const result = validateProfileData({ ...data, age: undefined });
 
         expect(result).toEqual([
-            ValidateProfileError.INCORRECT_AGE_DATA,
+            ValidateProfileError.INCORRECT_AGE,
         ]);
     });
 
@@ -47,7 +47,7 @@ describe('validateProfileData API service', () => {
 
         expect(result).toEqual([
             ValidateProfileError.INCORRECT_USER_DATA,
-            ValidateProfileError.INCORRECT_AGE_DATA,
+            ValidateProfileError.INCORRECT_AGE,
             ValidateProfileError.INCORRECT_LOCATION_DATA,
         ]);
     });
