@@ -6,7 +6,7 @@ const sliceName = process.argv[3];
 const layers = ['features', 'entities', 'pages'];
 
 if (!layer || !layer.includes(layer)) {
-    throw new Error(`[createSlice]: Enter the layer ${layer.join(' or ')}`);
+    throw new Error(`[createSlice]: Enter the layer ${layers.join(' or ')}`);
 }
 
 if (!sliceName) {

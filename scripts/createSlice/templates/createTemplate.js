@@ -1,8 +1,8 @@
 const fs = require('fs/promises');
 const resolveRoot = require('../resolveRoot');
-const createModel = require('../createModel');
-const createUI = require('../createUI');
-const createPublicApi = require('../createPublicApi');
+const createModel = require('./createModel');
+const createUI = require('./createUI');
+const createPublicApi = require('./createPublicApi');
 
 module.exports = async (layer, sliceName) => {
     try {

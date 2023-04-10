@@ -14,10 +14,11 @@ ${interfaceConst} ${componentName}Props {
 export const ${componentName} = memo((props: ${componentName}Props) => {
     const { className } = props;
     const { t } = useTranslation();
-    
+
     return (
         <div className={classNames(cls.${firstCharLowerCase(componentName)}, {}, [className])}>
-            {*/ children /*}
+            {/* { children } */}
         </div>
     );
-});`;
+});
+`;

@@ -1,22 +1,20 @@
 const firstCharUpperCase = require('../firstCharUpperCase');
+const firstCharLowerCase = require('../firstCharLowerCase');
 
 module.exports = (sliceName) => {
     const schemaTypeName = `${firstCharUpperCase(sliceName)}Schema`;
+    const sliceNameLower = firstCharLowerCase(sliceName);
 
     return `import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ${schemaTypeName} } from '../types/${sliceName}Schema';
 
-const initialState: ${schemaTypeName} = {
-    
-};
+const initialState: ${schemaTypeName} = {};
 
-export const ${sliceName}Slice = createSlice({
-    name: '${sliceName}',
+export const ${sliceNameLower}Slice = createSlice({
+    name: '${sliceNameLower}',
     initialState,
     reducers: {
-        template: (state, action: PayloadAction<string>) => {
-           
-        },
+        template: (state, action: PayloadAction<string>) => {},
     },
     // extraReducers: (builder) => {
     //     builder
@@ -34,6 +32,7 @@ export const ${sliceName}Slice = createSlice({
     // },
 });
 
-export const { actions: ${sliceName}Actions } = ${sliceName}Slice;
-export const { reducer: ${sliceName}Reducer } = ${sliceName}Slice;`;
+export const { actions: ${sliceNameLower}Actions } = ${sliceNameLower}Slice;
+export const { reducer: ${sliceNameLower}Reducer } = ${sliceNameLower}Slice;
+`;
 };
