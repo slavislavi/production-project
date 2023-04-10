@@ -1,3 +1,5 @@
+const firstCharLowerCase = require('../firstCharLowerCase');
+
 const interfaceConst = 'interface';
 
 module.exports = (componentName) => `import { memo } from 'react';
@@ -14,7 +16,7 @@ export const ${componentName} = memo((props: ${componentName}Props) => {
     const { t } = useTranslation();
     
     return (
-        <div className={classNames(cls.${componentName}, {}, [className])}>
+        <div className={classNames(cls.${firstCharLowerCase(componentName)}, {}, [className])}>
             {*/ children /*}
         </div>
     );
