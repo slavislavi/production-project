@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticlesInfiniteList } from './ArticlesInfiniteList';
 
 export default {
-    title: 'shared/ArticlesPage/ArticlesInfiniteList',
+    title: 'pages/ArticlesPage/ArticlesInfiniteList',
     component: ArticlesInfiniteList,
     argTypes: {
         backgroundColor: { control: 'color' },
