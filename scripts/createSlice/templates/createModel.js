@@ -28,4 +28,19 @@ module.exports = async (layer, sliceName) => {
             console.log('[createSlice]: Failed to create redux slice', e);
         }
     };
+
+    const createSchemaType = async () => {
+        try {
+            await fs.writeFile(
+                resolveModelPath('types', `${sliceName}Schema.ts`),
+                schemaTypeTemplate(sliceName),
+            );
+        } catch (e) {
+            console.log('[createSlice]: Failed to create schema of state', e);
+        }
+    };
+
+    await createModelStructure();
+    await createReduxSlice();
+    await createSchemaType();
 };
