@@ -22,6 +22,7 @@ Light.args = {};
 Light.decorators = [StoreDecorator({
     profile: {
         form: {
+            id: '1',
             username: 'admin',
             firstName: 'John',
             lastName: 'Connor',
@@ -39,6 +40,7 @@ Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
     profile: {
         form: {
+            id: '1',
             username: 'admin',
             firstName: 'John',
             lastName: 'Connor',
