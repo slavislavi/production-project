@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { mockArticle } from '../../mocks/data.mock';
-import { ArticleView } from '../../model/types/article';
+import { ArticleView } from '../../model/constants/articleConstants';
 import { ArticleList } from './ArticleList';
 
 export default {

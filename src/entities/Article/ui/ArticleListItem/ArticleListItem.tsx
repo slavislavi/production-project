@@ -9,11 +9,10 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import {
-    Article, ArticleBlockType, ArticleTextBlock, ArticleView,
-} from '../../model/types/article';
 import cls from './ArticleListItem.module.scss';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { Article, ArticleTextBlock } from '../../model/types/article';
+import { ArticleBlockType, ArticleView } from '../../model/constants/articleConstants';
 
 interface ArticleListItemProps {
     className?: string;

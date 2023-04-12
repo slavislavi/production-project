@@ -5,7 +5,7 @@ import TiledIcon from 'shared/assets/icons/small_view.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Button, ButtonVariant } from 'shared/ui/Button/Button';
 import cls from './ArticleViewSwitcher.module.scss';
-import { ArticleView } from '../../model/types/article';
+import { ArticleView } from '../../model/constants/articleConstants';
 
 interface ArticleViewSwitcherProps {
     className?: string;

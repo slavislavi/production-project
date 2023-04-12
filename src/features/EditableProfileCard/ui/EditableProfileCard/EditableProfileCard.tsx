@@ -17,7 +17,7 @@ import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/g
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import { ValidateProfileError } from '../../model/types/EditableProfileCardSchema';
+import { ValidateProfileError } from '../../model/constants/constants';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 
 interface EditableProfileCardProps {

@@ -3,5 +3,5 @@ export interface SidebarItemType {
     text: string;
     i18ns?: string;
     authOnly?: boolean;
-    Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
+    Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
