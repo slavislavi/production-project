@@ -9,7 +9,7 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={{ padding: '200px' }}>
+            <div style={{ padding: '100px' }}>
                 <Story />
             </div>
         ),
@@ -22,7 +22,6 @@ const testItems = [
     { content: 'Content number', value: '123' },
     { content: 'Splash Adventure', value: '1232' },
     { content: 'Suite candles', value: '669' },
-    { content: 'Refain desires', value: '1188' },
 ];
 
 export const Normal = Template.bind({});
