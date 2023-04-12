@@ -1,2 +1,2 @@
 export { ForbiddenPageAsync as ForbiddenPage } from './ui/ForbiddenPage/ForbiddenPage.async';
-export { ForbiddenPageSchema } from './model/types/ForbiddenPageSchema';
+export type { ForbiddenPageSchema } from './model/types/ForbiddenPageSchema';

@@ -1,15 +1,15 @@
 {
   "Slavio App": "Slavio App",
   "Авторизация": "Sign Up Form",
+  "Админка": "Admin panel",
   "Войти": "Sign In",
   "Выйти": "Sign Out",
   "Имя": "Name",
   "Неверный логин или пароль": "Invalid login or password",
+  "Нет доступа к данной странице": "This page is not available",
   "Пароль": "Password",
   "Профиль": "Profile",
   "Создать статью": "Create an article",
   "Язык": "English",
-  "Язык кратко": "En",
-  "Админка": "Admin panel",
-  "Нет доступа к данной странице": "This page is not available"
+  "Язык кратко": "En"
 }

@@ -7,60 +7,54 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [
+        (Story) => (
+            <div style={{ padding: '200px' }}>
+                <Story />
+            </div>
+        ),
+    ],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
 
+const testItems = [
+    { content: 'Content number', value: '123' },
+    { content: 'Splash Adventure', value: '1232' },
+    { content: 'Suite candles', value: '669' },
+    { content: 'Refain desires', value: '1188' },
+];
+
 export const Normal = Template.bind({});
 Normal.args = {
     value: '123',
-    items: [
-        { content: 'Content number', value: '123' },
-        { content: 'Splash Adventure', value: '1232' },
-        { content: 'Suite candles', value: '669' },
-    ],
+    items: testItems,
 };
 
 export const TopLeft = Template.bind({});
 TopLeft.args = {
     direction: 'top left',
     value: '123',
-    items: [
-        { content: 'Content number', value: '123' },
-        { content: 'Splash Adventure', value: '1232' },
-        { content: 'Suite candles', value: '669' },
-    ],
+    items: testItems,
 };
 
 export const TopRight = Template.bind({});
 TopRight.args = {
     direction: 'top right',
     value: '123',
-    items: [
-        { content: 'Content number', value: '123' },
-        { content: 'Splash Adventure', value: '1232' },
-        { content: 'Suite candles', value: '669' },
-    ],
+    items: testItems,
 };
 
 export const BottomLeft = Template.bind({});
 BottomLeft.args = {
     direction: 'bottom left',
     value: '123',
-    items: [
-        { content: 'Content number', value: '123' },
-        { content: 'Splash Adventure', value: '1232' },
-        { content: 'Suite candles', value: '669' },
-    ],
+    items: testItems,
 };
 
 export const BottomRight = Template.bind({});
 BottomRight.args = {
     direction: 'bottom right',
     value: '123',
-    items: [
-        { content: 'Content number', value: '123' },
-        { content: 'Splash Adventure', value: '1232' },
-        { content: 'Suite candles', value: '669' },
-    ],
+    items: testItems,
 };
