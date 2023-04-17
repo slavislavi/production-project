@@ -16,6 +16,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { HStack } from 'shared/ui/Stack';
 import { Icon } from 'shared/ui/Icon/Icon';
 import NotificationIcon from 'shared/assets/icons/notification-20-20.svg';
+import { Popover } from 'shared/ui/Popups';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -60,9 +61,16 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {t('Создать статью')}
                 </AppLink>
                 <HStack gap="16" className={cls.actions}>
-                    <Button variant={ButtonVariant.CLEAR}>
-                        <Icon Svg={NotificationIcon} inverted />
-                    </Button>
+                    <Popover
+                        direction="bottom left"
+                        trigger={(
+                            <Button variant={ButtonVariant.CLEAR}>
+                                <Icon Svg={NotificationIcon} inverted />
+                            </Button>
+                        )}
+                    >
+                        {8525645}
+                    </Popover>
                     <Dropdown
                         direction="bottom left"
                         className={cls.dropdown}
