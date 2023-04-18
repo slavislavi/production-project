@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useDevice = () => {
+export function useDevice() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -13,4 +13,4 @@ export const useDevice = () => {
     }, []);
 
     return isMobile;
-};
+}
