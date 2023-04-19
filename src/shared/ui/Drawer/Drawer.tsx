@@ -18,7 +18,7 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-export const DrawerContent = memo((props: DrawerProps) => {
+const DrawerContent = memo((props: DrawerProps) => {
     const {
         className,
         children,
@@ -73,6 +73,10 @@ export const DrawerContent = memo((props: DrawerProps) => {
             from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
         },
     );
+
+    if (!isOpen) {
+        return null;
+    }
 
     const display = y.to((py) => (py < height ? 'block' : 'none'));
 
