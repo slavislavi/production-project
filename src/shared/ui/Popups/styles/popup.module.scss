@@ -11,7 +11,8 @@
     cursor: pointer;
 }
 
-.active {
+.active,
+button.active {
     background: var(--inverted-primary-color);
 }
 
