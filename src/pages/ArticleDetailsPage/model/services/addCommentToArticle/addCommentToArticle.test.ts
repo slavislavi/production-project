@@ -1,5 +1,5 @@
-import { mockArticle } from 'entities/Article/mocks/data.mock';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { mockArticle } from '@/entities/Article/mocks/data.mock';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { addCommentToArticle } from './addCommentToArticle';
 
 const user = {

@@ -15,6 +15,7 @@ export default ({ config }: { config: Configuration }) => {
 
     config.resolve?.modules?.push(paths.src);
     config.resolve?.extensions?.push('.ts', '.tsx');
+    config!.resolve!.alias = { '@': path.resolve(__dirname, '..', '..', 'src') };
 
     const rules = config.module?.rules;
     const svgLoaderRule = rules?.find((rule) => rule !== '...' && /svg/.test(rule.test as string));
