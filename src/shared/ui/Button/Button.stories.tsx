@@ -20,6 +20,12 @@ Primary.args = {
     children: 'Text',
 };
 
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+    children: 'Text',
+    fullWidth: true,
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
     children: 'Text',
