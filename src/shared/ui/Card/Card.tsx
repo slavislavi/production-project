@@ -10,6 +10,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children: ReactNode;
     variant?: CardVariant;
+    fullWidth?: boolean;
 }
 
 export const Card = memo((props: CardProps) => {
@@ -17,11 +18,12 @@ export const Card = memo((props: CardProps) => {
         className,
         children,
         variant = CardVariant.NORMAL,
+        fullWidth,
         ...rest
     } = props;
 
     return (
-        <div className={classNames(cls.card, {}, [className, cls[variant]])} {...rest}>
+        <div className={classNames(cls.card, { [cls.fullWidth]: fullWidth }, [className, cls[variant]])} {...rest}>
             {children}
         </div>
     );
