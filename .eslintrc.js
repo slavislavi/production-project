@@ -56,7 +56,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
-        'slavio-fsd-plugin/path-checker': 2,
+        'slavio-fsd-plugin/path-checker': [2, { alias: '@' }],
     },
     globals: {
         __IS_DEV__: true,
