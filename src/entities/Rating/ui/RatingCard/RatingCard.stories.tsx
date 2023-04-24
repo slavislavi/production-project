@@ -12,4 +12,6 @@ export default {
 const Template: ComponentStory<typeof RatingCard> = (args) => <RatingCard {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+    title: 'Rating Card',
+};
