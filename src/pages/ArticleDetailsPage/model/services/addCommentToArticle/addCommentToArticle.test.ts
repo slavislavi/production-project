@@ -1,4 +1,4 @@
-import { mockArticle } from '@/entities/Article/mocks/data.mock';
+import { mockArticle } from '@/entities/Article/testing';
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { addCommentToArticle } from './addCommentToArticle';
 
