@@ -7,10 +7,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonVariant } from '@/shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink/AppLink';
 import { Text, TextVariant } from '@/shared/ui/Text/Text';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
+import { RoutePath } from '@/shared/constants/router';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
