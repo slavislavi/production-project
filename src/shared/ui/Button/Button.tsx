@@ -18,13 +18,34 @@ export enum ButtonSize {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-  variant?: ButtonVariant;
-  square?: boolean;
-  size?: ButtonSize;
-  disabled?: boolean;
-  children?: ReactNode;
-  fullWidth?: boolean;
+    /**
+     * Дополнительный класс, который можно передать на компонент
+     */
+    className?: string;
+    /**
+     * Тема (вариант) кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
+     */
+    variant?: ButtonVariant;
+    /**
+     * Флаг, делающий кнопку квадратной
+     */
+    square?: boolean;
+    /**
+     * Размер кнопки в соответствии с дизайн системой
+     */
+    size?: ButtonSize;
+    /**
+     * Флаг, отвечающий за доступность кнопки
+     */
+    disabled?: boolean;
+    /**
+     * Содержимое кнопки
+     */
+    children?: ReactNode;
+    /**
+     * Увеличивает кнопку на всю свободную ширину
+     */
+    fullWidth?: boolean;
 }
 
 export const Button = memo(({
