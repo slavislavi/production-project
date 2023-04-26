@@ -23,6 +23,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'slavio-fsd-plugin',
+        'unused-imports',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -38,6 +39,7 @@ module.exports = {
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'error',
         'no-console': 'off',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
