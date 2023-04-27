@@ -10,7 +10,7 @@ import { Text, TextVariant } from '@/shared/ui/Text';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
-import { RoutePath } from '@/shared/constants/router';
+import { getRouteArticleCreate } from '@/shared/constants/router';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -39,7 +39,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     variant={TextVariant.INVERTED}
                 />
                 <AppLink
-                    to={RoutePath.article_create}
+                    to={getRouteArticleCreate()}
                     theme={AppLinkVariant.SECONDARY}
                     className={cls.createBtn}
                 >
