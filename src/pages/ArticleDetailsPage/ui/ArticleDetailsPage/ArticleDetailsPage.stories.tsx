@@ -1,8 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Theme } from '@/shared/constants/theme';
-import { mockArticle } from '@/entities/Article/testing';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleDetailsPage } from './ArticleDetailsPage';
 
 export default {
@@ -17,24 +14,4 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDe
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [StoreDecorator({
-    articleDetails: {
-        data: mockArticle,
-    },
-})];
-
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [StoreDecorator({
-    articleDetails: {
-        data: mockArticle,
-    },
-}), ThemeDecorator(Theme.DARK)];
-
-export const Orange = Template.bind({});
-Orange.args = {};
-Orange.decorators = [StoreDecorator({
-    articleDetails: {
-        data: mockArticle,
-    },
-}), ThemeDecorator(Theme.ORANGE)];
+Normal.decorators = [StoreDecorator({})];

@@ -15,7 +15,7 @@ export default ({ config }: { config: Configuration }) => {
 
     config.resolve?.modules?.push(paths.src);
     config.resolve?.extensions?.push('.ts', '.tsx');
-    config!.resolve!.alias = { '@': path.resolve(__dirname, '..', '..', 'src') };
+    config!.resolve!.alias = { '@': path.resolve(paths.src) };
 
     const rules = config.module?.rules;
     const svgLoaderRule = rules?.find((rule) => rule !== '...' && /svg/.test(rule.test as string));
@@ -29,7 +29,7 @@ export default ({ config }: { config: Configuration }) => {
     );
     rules?.push(buildCssLoader(true));
 
-    config.plugins?.push(new DefinePlugin({
+    config!.plugins!.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),
         __API__: JSON.stringify('https://testapi.ru'),
         __PROJECT__: JSON.stringify('storybook'),
