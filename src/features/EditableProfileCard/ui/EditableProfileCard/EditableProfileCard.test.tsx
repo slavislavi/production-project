@@ -39,7 +39,7 @@ describe('features/EditableProfileCard', () => {
     test('on click edit must appear cancelButton', async () => {
         componentRender(<EditableProfileCard id="1" />, testOptions);
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditButton'));
-        expect(screen.getByTestId('EditableProfileCardHeader.EditButton')).toBeInTheDocument();
+        expect(screen.getByTestId('EditableProfileCardHeader.CancelButton')).toBeInTheDocument();
     });
 
     test('set new name, but on click cancel, previous form must be reset', async () => {
