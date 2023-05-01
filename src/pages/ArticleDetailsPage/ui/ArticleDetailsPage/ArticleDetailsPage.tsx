@@ -30,7 +30,10 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
+            <Page
+                data-testid="ArticleDetailsPage"
+                className={classNames(cls.articleDetailsPage, {}, [className])}
+            >
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />

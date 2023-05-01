@@ -13,7 +13,10 @@ export const ForbiddenPage = memo((props: ForbiddenPageProps) => {
     const { t } = useTranslation();
 
     return (
-        <Page className={classNames(cls.forbiddenPage, {}, [className])}>
+        <Page
+            data-testid="ForbiddenPage"
+            className={classNames(cls.forbiddenPage, {}, [className])}
+        >
             {t('Нет доступа к данной странице')}
         </Page>
     );
