@@ -10,8 +10,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
-import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
+import cls from './Page.module.scss';
 
 interface PageProps extends TestProps {
     className?: string;

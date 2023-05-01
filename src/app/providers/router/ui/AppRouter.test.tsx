@@ -48,7 +48,7 @@ describe('app/router/ui/AppRouter', () => {
         componentRender(<AppRouter />, {
             route: getRouteAdminPanel(),
             initialState: {
-                user: { _inited: true, authData: {} },
+                user: { _inited: true, authData: { roles: [UserRole.USER] } },
             },
         });
         const page = await screen.findByTestId('ForbiddenPage');
