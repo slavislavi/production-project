@@ -5,4 +5,4 @@ const cacheDir = joinPath(__dirname, '..', 'node_modules/.cache');
 
 fs.rmSync(cacheDir, { recursive: true, force: true });
 
-console.log('-==≡≡[ CACHE CLEARED ]≡≡==-');
+console.log(' -==≡≡[ CACHE CLEARED ]≡≡==- ');
