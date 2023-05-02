@@ -2,7 +2,7 @@
 /build
 /node_modules
 /storybook-static
-/reports
+/reports/unit
 .loki/report.html
 .loki/report.json
 .fttemplates
