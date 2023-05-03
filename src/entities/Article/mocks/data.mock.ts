@@ -2,15 +2,15 @@ import { ArticleBlockType, ArticleType } from '../model/constants/articleConstan
 import { Article } from '../model/types/article';
 
 export const mockArticle: Article = {
-    id: '1',
-    title: 'Javascript news',
+    id: '999999',
+    title: 'TEST ARTICLE',
     subtitle: 'What is new in FS in 2022?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
     views: 1022,
     createdAt: '26.02.2022',
     user: {
-        id: '1',
-        username: 'notorious',
+        id: '2',
+        username: 'user',
         avatar: 'https://avatarko.ru/img/kartinka/10/film_9969.jpg',
     },
     type: [ArticleType.IT, ArticleType.MEDICINE, ArticleType.FINANCES],

@@ -1,12 +1,3 @@
-declare global {
-    namespace Cypress {
-        interface Chainable {
-            updateProfile(firstName: string, lastName: string): Chainable<void>
-            resetProfile(profileId: string): Chainable<void>
-        }
-    }
-}
-
 export const updateProfile = (firstName: string, lastName: string) => {
     cy.getByTestId('EditableProfileCardHeader.EditButton').click();
     cy.getByTestId('ProfileCard.firstName').clear().type(firstName);
@@ -32,3 +23,12 @@ export const resetProfile = (profileId: string) => {
         },
     });
 };
+
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            updateProfile(firstName: string, lastName: string): Chainable<void>
+            resetProfile(profileId: string): Chainable<void>
+        }
+    }
+}

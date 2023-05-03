@@ -1,6 +1,6 @@
 let profileId = '';
 
-describe('User enters at ProfilePage', () => {
+describe('User goes to the ProfilePage', () => {
     beforeEach(() => {
         cy.visit('');
         cy.login().then((data) => {
