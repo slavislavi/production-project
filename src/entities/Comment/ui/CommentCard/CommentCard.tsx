@@ -20,6 +20,7 @@ export const CommentCard = (props: CommentCardProps) => {
     if (isLoading) {
         return (
             <VStack
+                data-testid="CommentCard.Loading"
                 gap="8"
                 max
                 className={classNames(cls.commentCard, {}, [className, cls.loading])}
@@ -41,6 +42,7 @@ export const CommentCard = (props: CommentCardProps) => {
         <VStack
             gap="8"
             max
+            data-testid="CommentCard.Content"
             className={classNames(cls.commentCard, {}, [className])}
         >
             <AppLink to={getRouteProfile(comment.user.id)} className={cls.header}>

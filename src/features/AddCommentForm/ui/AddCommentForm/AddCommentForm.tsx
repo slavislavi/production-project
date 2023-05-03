@@ -38,14 +38,20 @@ export const AddCommentForm = (props: AddCommentFormProps) => {
 
     return (
         <DynamicReducerLoader reducers={reducers}>
-            <HStack justify="between" className={classNames(cls.addCommentForm, {}, [className])}>
+            <HStack
+                data-testid="AddCommentForm"
+                justify="between"
+                className={classNames(cls.addCommentForm, {}, [className])}
+            >
                 <Input
+                    data-testid="AddCommentForm.Input"
                     className={cls.input}
                     placeholder={t('Введите текст комментария', { ns: 'articleDetails' })}
                     value={text}
                     onChange={onCommentTextChange}
                 />
                 <Button
+                    data-testid="AddCommentForm.Button"
                     onClick={onSendHandler}
                     variant={ButtonVariant.OUTLINED}
                 >
