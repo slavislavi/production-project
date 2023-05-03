@@ -21,7 +21,7 @@ describe('Routing', () => {
             cy.login();
         });
         it('Pass to ProfilePage', () => {
-            cy.visit('/profile/1');
+            cy.visit('/profile/2');
             cy.get(selectByTestId('ProfilePage')).should('exist');
         });
         it('Pass to ArticlesPage', () => {
