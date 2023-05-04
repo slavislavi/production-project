@@ -13,9 +13,7 @@
         "isolatedModules": false
     },
     "extends": "../tsconfig.json",
-    "include": [
-        "**/*.ts"
-    ],
+    "include": ["**/*.ts", "**/*.tsx"]
     // leave IF cypress will struggle with jest
     // "exclude": ["node_modules", "cypress", "./cypress.config.ts"]
 }
