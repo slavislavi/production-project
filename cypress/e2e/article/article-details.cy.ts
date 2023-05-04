@@ -31,4 +31,12 @@ describe('User goes to the Article', () => {
         cy.setRate(4, 'Good enough!');
         cy.get('[data-selected=true]').should('have.length', 4);
     });
+
+    it('and can rate the article (example with stubs, on fixtures)', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+        cy.getByTestId('ArticleDetails.Info').should('exist');
+        cy.getByTestId('RatingCard').scrollIntoView();
+        cy.setRate(4, 'Good enough!');
+        cy.get('[data-selected=true]').should('have.length', 4);
+    });
 });

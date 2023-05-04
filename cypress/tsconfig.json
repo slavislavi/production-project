@@ -15,5 +15,7 @@
     "extends": "../tsconfig.json",
     "include": [
         "**/*.ts"
-    ]
+    ],
+    // leave IF cypress will struggle with jest
+    // "exclude": ["node_modules", "cypress", "./cypress.config.ts"]
 }
