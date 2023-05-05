@@ -17,6 +17,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
 
     const typeTabs = useMemo(() => Object.values(ArticleType).reduce((acc: TabItem[], cur) => ([
         ...acc,
+        /* i18next-extract-disable-next-line */
         { value: cur, content: t(cur, { ns: 'articles' }) },
     ]), []), [t]);
 
