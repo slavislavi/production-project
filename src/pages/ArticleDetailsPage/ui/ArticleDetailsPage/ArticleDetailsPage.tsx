@@ -55,6 +55,5 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
                 </VStack>
             </Page>
         </DynamicReducerLoader>
-
     );
 });
