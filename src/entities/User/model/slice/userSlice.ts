@@ -3,7 +3,7 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/constants/localStorage';
 import { UserSchema, User } from '../types/user';
 import { setFeatureFlags } from '@/shared/lib/features';
 import { JsonSettings } from '../types/jsonSettings';
-import { saveJsonSettings } from '../service/saveJsonSettings';
+import { saveJsonSettings } from '../services/saveJsonSettings';
 
 const initialState: UserSchema = {
     _inited: false,
