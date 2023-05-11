@@ -3,4 +3,6 @@ export type { UserSchema, User } from './model/types/user';
 export { UserRole } from './model/constants/userConstants';
 export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
 export { getUserInited } from './model/selectors/getUserInited/getUserInited';
+
 export { isAdminSelector, isManagerSelector, getUserRoles } from './model/selectors/getUserRoles/getUserRoles';
+export { useJsonSettingsByKey } from './model/selectors/jsonSettings';

@@ -1207,6 +1207,10 @@
                 "isArticleRatingEnabled": true,
                 "isCounterEnabled": true
             },
+            "jsonSettings": {
+                "theme": "app_dark_theme",
+                "isFirstVisit": false
+            },
             "avatar": "https://avatarko.ru/img/kartinka/10/film_9969.jpg"
         },
         {
@@ -1220,6 +1224,10 @@
                 "isArticleRatingEnabled": true,
                 "isCounterEnabled": false
             },
+            "jsonSettings": {
+                "theme": "app_light_theme",
+                "isFirstVisit": true
+            },
             "avatar": "https://avatarko.ru/img/kartinka/8/sobaka_prikol_7066.jpg"
         },
         {
@@ -1229,6 +1237,10 @@
             "roles": [
                 "MANAGER"
             ],
+            "jsonSettings": {
+                "theme": "app_orange_theme",
+                "isFirstVisit": true
+            },
             "features": {
                 "isArticleRatingEnabled": false,
                 "isCounterEnabled": false
