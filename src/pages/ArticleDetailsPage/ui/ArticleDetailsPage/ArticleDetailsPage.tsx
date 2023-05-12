@@ -11,7 +11,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card';
 import cls from './ArticleDetailsPage.module.scss';
 
@@ -32,14 +32,6 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
         return null;
     }
 
-    const articleRatingCard = toggleFeatures({
-        name: 'isArticleRatingEnabled',
-        // eslint-disable-next-line react/no-unstable-nested-components
-        on: () => <ArticleRating articleId={id} />,
-        // eslint-disable-next-line react/no-unstable-nested-components
-        off: () => <Card>{t('Анонс рейтинга', { ns: 'articleDetails' })}</Card>,
-    });
-
     return (
         <DynamicReducerLoader reducers={reducers}>
             <Page
@@ -49,7 +41,11 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
                 <VStack gap="16" max>
                     <ArticleDetailsPageHeader />
                     <ArticleDetails id={id} />
-                    {articleRatingCard}
+                    <ToggleFeatures
+                        feature="isArticleRatingEnabled"
+                        on={<ArticleRating articleId={id} />}
+                        off={<Card>{t('Анонс рейтинга', { ns: 'articleDetails' })}</Card>}
+                    />
                     <ArticleRecommendsList />
                     <ArticleDetailsComments id={id} />
                 </VStack>
