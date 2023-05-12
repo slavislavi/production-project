@@ -1,4 +1,5 @@
 {
+  "Анонс рейтинга": "Rating card is coming soon!",
   "Введите текст комментария": "Type the comment",
   "Комментарии": "Comments",
   "Комментарии отсутствуют": "No comments",
@@ -6,6 +7,5 @@
   "О статье": "About article",
   "Отправить": "Send",
   "Редактировать": "Edit",
-  "Рекомендуем": "Recommendations",
-  "Анонс рейтинга": "Rating card is coming soon!"
+  "Рекомендуем": "Recommendations"
 }

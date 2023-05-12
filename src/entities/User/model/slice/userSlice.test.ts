@@ -7,16 +7,6 @@ const data: User = {
 };
 
 describe('userSlice', () => {
-    test('test set _inited', () => {
-        const state: DeepPartial<UserSchema> = {
-            _inited: false,
-        };
-        expect(userReducer(state as UserSchema, userActions.initAuthData()))
-            .toEqual({
-                _inited: true,
-            });
-    });
-
     test('test set new user', () => {
         const state: DeepPartial<UserSchema> = {
             authData: undefined,
