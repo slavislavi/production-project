@@ -10,6 +10,7 @@ import { initArticlesPage } from '../../model/services/initArticlesPage/initArti
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
+import { ArticlesPageGreeting } from '@/features/ArticlesPageGreeting';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -42,6 +43,7 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
             >
                 <ArticlesPageFilters />
                 <ArticlesInfiniteList className={cls.list} />
+                <ArticlesPageGreeting />
             </Page>
         </DynamicReducerLoader>
     );
