@@ -5,12 +5,13 @@ import { LoginModal } from '@/features/AuthByUsername';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonVariant } from '@/shared/ui/Button';
-import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { Text, TextVariant } from '@/shared/ui/Text';
+import { AppLink, AppLinkVariant } from '@/shared/ui/AppLink';
+import { getRouteArticleCreate } from '@/shared/constants/router';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/NotificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
-import { getRouteArticleCreate } from '@/shared/constants/router';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -32,24 +33,37 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     if (authData) {
         return (
-            <header className={classNames(cls.navbar, {}, [className])}>
-                <Text
-                    className={cls.appName}
-                    title={t('Slavio App')}
-                    variant={TextVariant.INVERTED}
-                />
-                <AppLink
-                    to={getRouteArticleCreate()}
-                    theme={AppLinkVariant.SECONDARY}
-                    className={cls.createBtn}
-                >
-                    {t('Создать статью')}
-                </AppLink>
-                <HStack gap="16" className={cls.actions}>
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </header>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={(
+                    <header className={classNames(cls.navbarRedesigned, {}, [className])}>
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                )}
+                off={(
+                    <header className={classNames(cls.navbar, {}, [className])}>
+                        <Text
+                            className={cls.appName}
+                            title={t('Slavio App')}
+                            variant={TextVariant.INVERTED}
+                        />
+                        <AppLink
+                            to={getRouteArticleCreate()}
+                            theme={AppLinkVariant.SECONDARY}
+                            className={cls.createBtn}
+                        >
+                            {t('Создать статью')}
+                        </AppLink>
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                )}
+            />
         );
     }
 
