@@ -39,7 +39,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         className,
                     ])}
                 >
-                    <AppLogo />
+                    <AppLogo className={cls.appLogo} />
                 </aside>
             )}
             off={(

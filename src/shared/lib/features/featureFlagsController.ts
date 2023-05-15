@@ -10,5 +10,8 @@ export function setFeatureFlags(newFeatureFlags?: FeatureFlags) {
 }
 
 export function getFeatureFlag(flag: keyof FeatureFlags) {
+    if (!featureFlags) { // todo временное решение ибо приходил undefined
+        return false;
+    }
     return featureFlags[flag];
 }
