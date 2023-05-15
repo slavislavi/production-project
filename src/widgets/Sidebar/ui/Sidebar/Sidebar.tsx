@@ -9,6 +9,7 @@ import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import cls from './Sidebar.module.scss';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 interface SidebarProps {
     className?: string;
@@ -38,24 +39,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         className,
                     ])}
                 >
-                    <Button
-                        data-testid="sidebar-toggle"
-                        onClick={onToggle}
-                        className={cls.collapseBtn}
-                        variant={ButtonVariant.BACKGROUND_INVERTED}
-                        size={ButtonSize.L}
-                        square
-                    >
-                        {collapsed ? '>' : '<'}
-
-                    </Button>
-                    <VStack role="navigation" gap="8" className={cls.items}>
-                        {itemsList}
-                    </VStack>
-                    <div className={cls.switchers}>
-                        <ThemeSwitcher />
-                        <LangSwitcher short={collapsed} className={cls.lang} />
-                    </div>
+                    <AppLogo />
                 </aside>
             )}
             off={(
