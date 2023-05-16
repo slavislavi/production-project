@@ -38,7 +38,6 @@ export const App = () => {
                             header={<Navbar />}
                             content={<AppRouter />}
                             sidebar={<Sidebar />}
-                            toolbar={<div>12345</div>}
                         />
                     </Suspense>
                 </div>
