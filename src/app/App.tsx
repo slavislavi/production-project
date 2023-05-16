@@ -1,8 +1,7 @@
 import { Suspense, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
-import { getUserInited, initAuthData } from '@/entities/User';
+import { initAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { AppRouter } from './providers/router';
@@ -13,7 +12,6 @@ import { MainLayout } from '@/shared/layouts/MainLayout';
 export const App = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
-    const inited = useSelector(getUserInited);
 
     useEffect(() => {
         dispatch(initAuthData());

@@ -1,19 +1,19 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/Icon';
-import { Text } from '@/shared/ui/Text';
+import { Icon } from '@/shared/ui/depricated/Icon';
+import { Text } from '@/shared/ui/depricated/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import { Card } from '@/shared/ui/Card';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Button, ButtonVariant } from '@/shared/ui/Button';
-import { AppLink } from '@/shared/ui/AppLink';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticleView } from '../../model/constants/articleConstants';
 import { getRouteArticleDetails } from '@/shared/constants/router';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { AppImage } from '@/shared/ui/depricated/AppImage';
+import { Skeleton } from '@/shared/ui/depricated/Skeleton';
+import { Card } from '@/shared/ui/depricated/Card';
+import { Avatar } from '@/shared/ui/depricated/Avatar';
+import { AppLink } from '@/shared/ui/depricated/AppLink';
+import { Button, ButtonVariant } from '@/shared/ui/depricated/Button';
 import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
