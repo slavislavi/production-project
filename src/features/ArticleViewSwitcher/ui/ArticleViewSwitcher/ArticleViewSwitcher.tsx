@@ -41,6 +41,8 @@ export const ArticleViewSwitcher = memo((props: ArticleViewSwitcherProps) => {
                 >
                     <Icon
                         Svg={viewType.icon}
+                        width={24}
+                        height={24}
                         className={classNames('', { [cls.notSelected]: viewType.view !== view })}
                     />
                 </Button>
