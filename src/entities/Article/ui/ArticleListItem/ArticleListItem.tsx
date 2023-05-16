@@ -1,19 +1,19 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/depricated/Icon';
-import { Text } from '@/shared/ui/depricated/Text';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Text } from '@/shared/ui/deprecated/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticleView } from '../../model/constants/articleConstants';
 import { getRouteArticleDetails } from '@/shared/constants/router';
-import { AppImage } from '@/shared/ui/depricated/AppImage';
-import { Skeleton } from '@/shared/ui/depricated/Skeleton';
-import { Card } from '@/shared/ui/depricated/Card';
-import { Avatar } from '@/shared/ui/depricated/Avatar';
-import { AppLink } from '@/shared/ui/depricated/AppLink';
-import { Button, ButtonVariant } from '@/shared/ui/depricated/Button';
+import { AppImage } from '@/shared/ui/deprecated/AppImage';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button';
 import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
