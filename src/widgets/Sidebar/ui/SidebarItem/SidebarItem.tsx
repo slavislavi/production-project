@@ -3,8 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink, AppLinkVariant } from '@/shared/ui/deprecated/AppLink';
+import { AppLink as AppLinkDeprecated, AppLinkVariant } from '@/shared/ui/deprecated/AppLink';
+import { AppLink } from '@/shared/ui/redesigned/AppLink';
 import { SidebarItemType } from '../../model/types/sidebar';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
@@ -21,14 +24,32 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     }
 
     return (
-        <AppLink
-            className={classNames(cls.item, { [cls.collapsed]: collapsed })}
-            theme={AppLinkVariant.SECONDARY}
-            to={item.path}
-        >
-            <item.Icon className={cls.icon} />
-            {/* i18next-extract-disable-next-line */}
-            <span className={cls.link}>{t(item.text, { ns: item.i18ns })}</span>
-        </AppLink>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={(
+                <AppLink
+                    to={item.path}
+                    className={classNames(cls.itemRedesigned, {
+                        [cls.collapsedRedesigned]: collapsed,
+                    })}
+                    activeClassName={cls.active}
+                >
+                    <Icon Svg={item.Icon} />
+                    <span className={cls.link}>{t(item.text)}</span>
+                </AppLink>
+            )}
+            off={(
+                <AppLinkDeprecated
+                    theme={AppLinkVariant.SECONDARY}
+                    to={item.path}
+                    className={classNames(cls.item, {
+                        [cls.collapsed]: collapsed,
+                    })}
+                >
+                    <item.Icon className={cls.icon} />
+                    <span className={cls.link}>{t(item.text)}</span>
+                </AppLinkDeprecated>
+            )}
+        />
     );
 });

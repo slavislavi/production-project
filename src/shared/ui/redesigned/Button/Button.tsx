@@ -2,20 +2,9 @@ import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
-export enum ButtonVariant {
-  CLEAR = 'clear',
-  CLEAR_INVERTED = 'clear_inverted',
-  OUTLINED = 'outlined',
-  OUTLINED_RED = 'outlined_red',
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'background_inverted',
-}
+export type ButtonVariant = 'clear' | 'outline';
 
-export enum ButtonSize {
-    M = 'size_m',
-    L = 'size_l',
-    XL = 'size_xl'
-}
+export type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     /**
@@ -48,34 +37,28 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     fullWidth?: boolean;
 }
 
-/**
- * This component is not supported more
- * @deprecated
- */
 export const Button = memo(({
     className,
     children,
-    variant = ButtonVariant.OUTLINED,
+    variant = 'outline',
     square,
-    size = ButtonSize.M,
+    size = 'm',
     disabled,
     fullWidth,
-    ...rest
+    ...otherProps
 }: ButtonProps) => {
     const mods: Mods = {
-        [cls[variant]]: true,
         [cls.square]: square,
         [cls.disabled]: disabled,
-        [cls[size]]: true,
         [cls.fullWidth]: fullWidth,
     };
 
     return (
         <button
             type="button"
-            className={classNames(cls.button, mods, [className])}
+            className={classNames(cls.button, mods, [className, cls[variant], cls[size]])}
             disabled={disabled}
-            {...rest}
+            {...otherProps}
         >
             {children}
         </button>

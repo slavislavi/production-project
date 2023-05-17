@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/constants/theme';
-import { AppLink, AppLinkVariant } from './AppLink';
+import { AppLink } from './AppLink';
 
 export default {
     title: 'shared/AppLink',
@@ -19,38 +19,25 @@ const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />
 export const Primary = Template.bind({});
 Primary.args = {
     children: 'Text',
-    theme: AppLinkVariant.PRIMARY,
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-    children: 'Text',
-    theme: AppLinkVariant.SECONDARY,
+    variant: 'primary',
 };
 
 export const Red = Template.bind({});
 Red.args = {
     children: 'Text',
-    theme: AppLinkVariant.RED,
+    variant: 'red',
 };
 
 export const PrimaryDark = Template.bind({});
 PrimaryDark.args = {
     children: 'Text',
-    theme: AppLinkVariant.PRIMARY,
+    variant: 'primary',
 };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const SecondaryDark = Template.bind({});
-SecondaryDark.args = {
-    children: 'Text',
-    theme: AppLinkVariant.SECONDARY,
-};
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const RedDark = Template.bind({});
 RedDark.args = {
     children: 'Text',
-    theme: AppLinkVariant.RED,
+    variant: 'red',
 };
 RedDark.decorators = [ThemeDecorator(Theme.DARK)];
