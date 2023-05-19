@@ -1,13 +1,12 @@
 .card {
     padding: 24px;
-    border-radius: 12px;
 }
 
 .withoutPaddings {
     padding: 0;
 }
 
-.normal {
+.primary {
     background: var(--dark-bg-redesigned);
 }
 
@@ -19,7 +18,15 @@
     border: 1px solid var(--accent-redesigned);
 }
 
-.fullWidth {
+.normal {
+    border-radius: 12px;
+}
+
+.round {
+    border-radius: 40px;
+}
+
+.max {
     width: 100%;
 }
 

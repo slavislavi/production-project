@@ -12,6 +12,9 @@ import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
 import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
 import { ArticlesPageGreeting } from '@/features/ArticlesPageGreeting';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { ViewSwitcherContainer } from '../ViewSwitcherContainer/ViewSwitcherContainer';
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -39,20 +42,30 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
         <ToggleFeatures
             feature="isAppRedesigned"
             on={(
-                <Page
-                    data-testid="ArticlesPage"
-                    className={classNames(cls.articlesPage, {}, [className])}
-                    onScrollEnd={onLoadNextPart}
-                >
-                    <ArticlesInfiniteList className={cls.list} />
-                    <ArticlesPageGreeting />
-                </Page>
+                <StickyContentLayout
+                    left={<ViewSwitcherContainer />}
+                    right={<FiltersContainer />}
+                    content={(
+                        <Page
+                            data-testid="ArticlesPage"
+                            onScrollEnd={onLoadNextPart}
+                            className={classNames(
+                                cls.articlesPageRedesigned,
+                                {},
+                                [className],
+                            )}
+                        >
+                            <ArticlesInfiniteList className={cls.list} />
+                            <ArticlesPageGreeting />
+                        </Page>
+                    )}
+                />
             )}
             off={(
                 <Page
                     data-testid="ArticlesPage"
-                    className={classNames(cls.articlesPage, {}, [className])}
                     onScrollEnd={onLoadNextPart}
+                    className={classNames(cls.articlesPage, {}, [className])}
                 >
                     <ArticlesPageFilters />
                     <ArticlesInfiniteList className={cls.list} />

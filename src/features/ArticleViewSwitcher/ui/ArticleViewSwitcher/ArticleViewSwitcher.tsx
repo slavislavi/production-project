@@ -1,10 +1,16 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import ListedIcon from '@/shared/assets/icons/big_view.svg';
-import TiledIcon from '@/shared/assets/icons/small_view.svg';
-import { Icon } from '@/shared/ui/deprecated/Icon';
-import { Button, ButtonVariant } from '@/shared/ui/deprecated/Button';
+import ListedIconDeprecated from '@/shared/assets/icons/big_view.svg';
+import TiledIconDeprecated from '@/shared/assets/icons/small_view.svg';
+import ListIcon from '@/shared/assets/icons/burger.svg';
+import TiledIcon from '@/shared/assets/icons/tile.svg';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { Button as ButtonDeprecated, ButtonVariant } from '@/shared/ui/deprecated/Button';
 import { ArticleView } from '@/entities/Article';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/redesigned/Card';
+import { HStack } from '@/shared/ui/redesigned/Stack';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import cls from './ArticleViewSwitcher.module.scss';
 
 interface ArticleViewSwitcherProps {
@@ -16,11 +22,19 @@ interface ArticleViewSwitcherProps {
 const viewTypes = [
     {
         view: ArticleView.SMALL,
-        icon: TiledIcon,
+        icon: toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => TiledIcon,
+            off: () => TiledIconDeprecated,
+        }),
     },
     {
         view: ArticleView.BIG,
-        icon: ListedIcon,
+        icon: toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => ListIcon,
+            off: () => ListedIconDeprecated,
+        }),
     },
 ];
 
@@ -32,21 +46,55 @@ export const ArticleViewSwitcher = memo((props: ArticleViewSwitcherProps) => {
     };
 
     return (
-        <div className={classNames(cls.articleViewSwitcher, {}, [className])}>
-            {viewTypes.map((viewType) => (
-                <Button
-                    variant={ButtonVariant.CLEAR}
-                    onClick={onClick(viewType.view)}
-                    key={viewType.view}
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={(
+                <Card
+                    className={classNames(
+                        cls.ArticleViewSelectorRedesigned,
+                        {},
+                        [className],
+                    )}
+                    border="round"
                 >
-                    <Icon
-                        Svg={viewType.icon}
-                        width={24}
-                        height={24}
-                        className={classNames('', { [cls.notSelected]: viewType.view !== view })}
-                    />
-                </Button>
-            ))}
-        </div>
+                    <HStack gap="8">
+                        {viewTypes.map((viewType) => (
+                            <Icon
+                                clickable
+                                onClick={onClick(viewType.view)}
+                                Svg={viewType.icon}
+                                className={classNames('', {
+                                    [cls.notSelected]: viewType.view !== view,
+                                })}
+                            />
+                        ))}
+                    </HStack>
+                </Card>
+            )}
+            off={(
+                <div
+                    className={classNames(cls.ArticleViewSelector, {}, [
+                        className,
+                    ])}
+                >
+                    {viewTypes.map((viewType) => (
+                        <ButtonDeprecated
+                            key={viewType.view}
+                            variant={ButtonVariant.CLEAR}
+                            onClick={onClick(viewType.view)}
+                        >
+                            <IconDeprecated
+                                width={24}
+                                height={24}
+                                Svg={viewType.icon}
+                                className={classNames('', {
+                                    [cls.notSelected]: viewType.view !== view,
+                                })}
+                            />
+                        </ButtonDeprecated>
+                    ))}
+                </div>
+            )}
+        />
     );
 });
