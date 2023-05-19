@@ -11,6 +11,7 @@ import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { ArticlesInfiniteList } from '../ArticlesInfiniteList/ArticlesInfiniteList';
 import { ArticlesPageGreeting } from '@/features/ArticlesPageGreeting';
+import { ToggleFeatures } from '@/shared/lib/features';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -34,17 +35,36 @@ export const ArticlesPage = memo((props: ArticlesPageProps) => {
         dispatch(initArticlesPage(searchParams));
     });
 
+    const content = (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={(
+                <Page
+                    data-testid="ArticlesPage"
+                    className={classNames(cls.articlesPage, {}, [className])}
+                    onScrollEnd={onLoadNextPart}
+                >
+                    <ArticlesInfiniteList className={cls.list} />
+                    <ArticlesPageGreeting />
+                </Page>
+            )}
+            off={(
+                <Page
+                    data-testid="ArticlesPage"
+                    className={classNames(cls.articlesPage, {}, [className])}
+                    onScrollEnd={onLoadNextPart}
+                >
+                    <ArticlesPageFilters />
+                    <ArticlesInfiniteList className={cls.list} />
+                    <ArticlesPageGreeting />
+                </Page>
+            )}
+        />
+    );
+
     return (
         <DynamicReducerLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page
-                data-testid="ArticlesPage"
-                className={classNames(cls.articlesPage, {}, [className])}
-                onScrollEnd={onLoadNextPart}
-            >
-                <ArticlesPageFilters />
-                <ArticlesInfiniteList className={cls.list} />
-                <ArticlesPageGreeting />
-            </Page>
+            {content}
         </DynamicReducerLoader>
     );
 });
