@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/deprecated/Stack';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 import { useNotifications } from '../../api/notificationApi';
 import cls from './NotificationList.module.scss';
@@ -23,9 +23,9 @@ export const NotificationList = memo((props: NotificationListProps) => {
                 max
                 className={classNames(cls.notificationList, {}, [className])}
             >
-                <Skeleton width="100%" border="8px" height="80px" />
-                <Skeleton width="100%" border="8px" height="80px" />
-                <Skeleton width="100%" border="8px" height="80px" />
+                <SkeletonDeprecated width="100%" border="8px" height="80px" />
+                <SkeletonDeprecated width="100%" border="8px" height="80px" />
+                <SkeletonDeprecated width="100%" border="8px" height="80px" />
             </VStack>
         );
     }
