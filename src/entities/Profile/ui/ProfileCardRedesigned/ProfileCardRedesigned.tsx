@@ -78,17 +78,17 @@ export const ProfileCardRedesigned = memo((props: ProfileCardProps) => {
                     <VStack gap="16" max>
                         <Input
                             value={data?.firstName}
-                            label={t('Ваше имя', { ns: 'profile' })}
+                            label={t('Имя', { ns: 'profile' })}
                             onChange={onChangeFirstName}
                             readonly={readonly}
-                            data-testid="ProfileCard.firstname"
+                            data-testid="ProfileCard.firstName"
                         />
                         <Input
                             value={data?.lastName}
-                            label={t('Ваша фамилия', { ns: 'profile' })}
+                            label={t('Фамилия', { ns: 'profile' })}
                             onChange={onChangeLastName}
                             readonly={readonly}
-                            data-testid="ProfileCard.lastname"
+                            data-testid="ProfileCard.lastName"
                         />
                         <Input
                             value={data?.age}
