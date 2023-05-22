@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Button, ButtonVariant } from './Button';
+import { Button } from './Button';
 
 describe('Button', () => {
     test('test render in DOM', () => {
@@ -8,7 +8,7 @@ describe('Button', () => {
     });
 
     test('with clear variant class', () => {
-        render(<Button variant={ButtonVariant.CLEAR}>TEST</Button>);
+        render(<Button variant="clear">TEST</Button>);
         expect(screen.getByText('TEST')).toHaveClass('clear');
     });
 });
