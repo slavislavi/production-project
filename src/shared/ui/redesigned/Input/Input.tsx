@@ -1,17 +1,28 @@
 import {
-    ChangeEvent, InputHTMLAttributes, memo, SyntheticEvent, useEffect, useRef, useState,
+    ChangeEvent, InputHTMLAttributes, memo, ReactNode, useEffect, useRef, useState,
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { HStack } from '../Stack';
+import { Text } from '../Text';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>
+type HTMLInputProps = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'value' | 'onChange' | 'readOnly' | 'size'
+>;
+
+type InputSize = 's' | 'm' | 'l';
 
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
+    label?: string;
     onChange?: (value: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
+    addonLeft?: ReactNode;
+    addonRight?: ReactNode;
+    size?: InputSize;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -23,30 +34,29 @@ export const Input = memo((props: InputProps) => {
         placeholder,
         autofocus,
         readonly,
+        addonLeft,
+        addonRight,
+        label,
+        size = 'm',
         ...otherProps
     } = props;
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
-    const [caretPosition, setCaretPosition] = useState(0);
-
-    const isCaretVisible = isFocused && !readonly;
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length);
     };
 
     const onBlurHandler = () => setIsFocused(false);
 
     const onFocusHandler = () => setIsFocused(true);
 
-    const onSelectHandler = (e: SyntheticEvent<HTMLInputElement, Event>) => {
-        setCaretPosition(e.currentTarget.selectionStart || 0);
-    };
-
     const mods: Mods = {
         [cls.readonly]: readonly,
+        [cls.focused]: isFocused,
+        [cls.withAddonLeft]: Boolean(addonLeft),
+        [cls.withAddonRight]: Boolean(addonRight),
     };
 
     useEffect(() => {
@@ -56,30 +66,38 @@ export const Input = memo((props: InputProps) => {
         }
     }, [autofocus]);
 
-    return (
-        <div className={classNames(cls.inputWrapper, mods, [className])}>
-            {placeholder && (
-                <div className={cls.placeholder}>
-                    {`${placeholder}>`}
-                </div>
-            )}
-            <div className={cls.caretWrapper}>
-                <input
-                    ref={inputRef}
-                    type={type}
-                    value={value}
-                    onChange={onChangeHandler}
-                    className={cls.input}
-                    onFocus={onFocusHandler}
-                    onBlur={onBlurHandler}
-                    onSelect={onSelectHandler}
-                    readOnly={readonly}
-                    {...otherProps}
-                />
-                {isCaretVisible && (
-                    <span className={cls.caret} style={{ left: `${caretPosition * 9}px` }} />
-                )}
-            </div>
+    const input = (
+        <div
+            className={classNames(cls.inputWrapper, mods, [
+                className,
+                cls[size],
+            ])}
+        >
+            <div className={cls.addonLeft}>{addonLeft}</div>
+            <input
+                ref={inputRef}
+                type={type}
+                value={value}
+                onChange={onChangeHandler}
+                className={cls.input}
+                onFocus={onFocusHandler}
+                onBlur={onBlurHandler}
+                readOnly={readonly}
+                placeholder={placeholder}
+                {...otherProps}
+            />
+            <div className={cls.addonRight}>{addonRight}</div>
         </div>
     );
+
+    if (label) {
+        return (
+            <HStack max gap="8">
+                <Text text={label} />
+                {input}
+            </HStack>
+        );
+    }
+
+    return input;
 });
