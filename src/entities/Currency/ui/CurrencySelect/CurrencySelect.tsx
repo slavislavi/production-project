@@ -33,8 +33,8 @@ export const CurrencySelect = memo(({
     const props = {
         className,
         value,
-        defaultValue: t('Укажите валюту', { ns: 'profile' }),
-        label: t('Укажите валюту', { ns: 'profile' }),
+        defaultValue: t('Валюта', { ns: 'profile' }),
+        label: t('Валюта', { ns: 'profile' }),
         items: OPTIONS,
         onChange: onChangeHandler,
         readonly,
