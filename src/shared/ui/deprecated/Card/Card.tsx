@@ -1,9 +1,9 @@
-import { HTMLAttributes, memo, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
 export enum CardVariant {
-    NORMAL = 'normal',
+    PRIMARY = 'primary',
     OUTLINED = 'outlined'
 }
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -17,18 +17,25 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  * This component is not supported more
  * @deprecated
  */
-export const Card = memo((props: CardProps) => {
+export const Card = (props: CardProps) => {
     const {
         className,
         children,
-        variant = CardVariant.NORMAL,
+        variant = CardVariant.PRIMARY,
         fullWidth,
-        ...rest
+        ...otherProps
     } = props;
 
     return (
-        <div className={classNames(cls.card, { [cls.fullWidth]: fullWidth }, [className, cls[variant]])} {...rest}>
+        <div
+            className={classNames(
+                cls.card,
+                { [cls.fullWidth]: fullWidth },
+                [className, cls[variant]],
+            )}
+            {...otherProps}
+        >
             {children}
         </div>
     );
-});
+};

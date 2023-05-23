@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/constants/theme';
-import { Text, TextSize, TextVariant } from './Text';
+import { Text } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -17,20 +17,6 @@ export const Default = Template.bind({});
 Default.args = {
     title: 'Title Lorem ipsum',
     text: 'Description text secondary',
-};
-
-export const Error = Template.bind({});
-Error.args = {
-    title: 'Title Lorem ipsum',
-    text: 'Description text secondary',
-    variant: TextVariant.ERROR,
-};
-
-export const Inverted = Template.bind({});
-Inverted.args = {
-    title: 'Title Lorem ipsum',
-    text: 'Description text secondary',
-    variant: TextVariant.INVERTED,
 };
 
 export const OnlyTitle = Template.bind({});
@@ -61,24 +47,3 @@ OnlyTextDark.args = {
     text: 'Description text secondary',
 };
 OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const SizeS = Template.bind({});
-SizeS.args = {
-    title: 'Title Lorem ipsum',
-    text: 'Description text secondary',
-    size: TextSize.S,
-};
-
-export const SizeL = Template.bind({});
-SizeL.args = {
-    title: 'Title Lorem ipsum',
-    text: 'Description text secondary',
-    size: TextSize.L,
-};
-
-export const SizeXL = Template.bind({});
-SizeXL.args = {
-    title: 'Title Lorem ipsum',
-    text: 'Description text secondary',
-    size: TextSize.XL,
-};
