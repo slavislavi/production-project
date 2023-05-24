@@ -6,6 +6,7 @@ import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/Ani
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+import { toggleFeatures } from '@/shared/lib/features';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
@@ -82,7 +83,17 @@ const DrawerContent = memo((props: DrawerProps) => {
 
     return (
         <Portal element={document.getElementById('app') ?? document.body}>
-            <div className={classNames(cls.drawer, {}, [className, theme, 'app_drawer'])}>
+            <div className={classNames(cls.drawer, {}, [
+                className,
+                theme,
+                'app_drawer',
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    on: () => cls.drawerNew,
+                    off: () => cls.drawerOld,
+                }),
+            ])}
+            >
                 <Overlay onClick={close} />
                 <Spring.a.div
                     className={cls.sheet}

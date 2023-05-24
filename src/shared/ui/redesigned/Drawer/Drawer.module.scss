@@ -4,6 +4,7 @@
     bottom: 0;
     right: 0;
     left: 0;
+    z-index: 100;
     display: flex;
     align-items: flex-end;
 }
@@ -28,4 +29,16 @@
     background: var(--bg-color);
     touch-action: none;
     padding: 15px;
+}
+
+.drawerNew {
+    .sheet {
+        background: var(--light-bg-redesigned);
+    }
+}
+
+.drawerOld {
+    .sheet {
+        background: var(--bg-color);
+    }
 }
