@@ -81,7 +81,7 @@ const DrawerContent = memo((props: DrawerProps) => {
     const display = y.to((py) => (py < height ? 'block' : 'none'));
 
     return (
-        <Portal>
+        <Portal element={document.getElementById('app') ?? document.body}>
             <div className={classNames(cls.drawer, {}, [className, theme, 'app_drawer'])}>
                 <Overlay onClick={close} />
                 <Spring.a.div
@@ -106,10 +106,6 @@ const DrawerAsync = (props: DrawerProps) => {
     return <DrawerContent {...props} />;
 };
 
-/**
- * This component is not supported more
- * @deprecated
- */
 export const Drawer = (props: DrawerProps) => (
     <AnimationProvider>
         <DrawerAsync {...props} />
