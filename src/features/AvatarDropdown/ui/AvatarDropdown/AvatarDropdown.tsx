@@ -8,7 +8,7 @@ import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import {
     getUserAuthData, isAdminSelector, isManagerSelector, userActions,
 } from '@/entities/User';
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/constants/router';
+import { getRouteAdminPanel, getRouteProfile, getRouteSettings } from '@/shared/constants/router';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
@@ -35,7 +35,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         return null;
     }
 
-    const items = [
+    const ITEMS = [
         ...(isAdminPanelAvailable ? [{
             content: t('Админка'),
             href: getRouteAdminPanel(),
@@ -43,6 +43,10 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         {
             content: t('Профиль'),
             href: getRouteProfile(authData.id),
+        },
+        {
+            content: t('Настройки'),
+            href: getRouteSettings(),
         },
         {
             content: t('Выйти'),
@@ -57,7 +61,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                 <Dropdown
                     direction="bottom left"
                     className={classNames('', {}, [className])}
-                    items={items}
+                    items={ITEMS}
                     trigger={<Avatar size={40} src={authData.avatar} />}
                 />
             )}
@@ -65,7 +69,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
                 <DropdownDeprecated
                     direction="bottom left"
                     className={classNames('', {}, [className])}
-                    items={items}
+                    items={ITEMS}
                     trigger={<AvatarDeprecated fallbackInverted size={30} src={authData.avatar} />}
                 />
             )}
