@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
 export type CardVariant = 'primary' | 'outlined' | 'light';
@@ -11,6 +11,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     variant?: CardVariant;
     fullWidth?: boolean;
+    fullHeight?: boolean;
     padding?: CardPadding;
     border?: CardBorder;
 }
@@ -28,6 +29,7 @@ export const Card = (props: CardProps) => {
         children,
         variant = 'primary',
         fullWidth,
+        fullHeight,
         padding = '8',
         border = 'normal',
         ...otherProps
@@ -35,9 +37,14 @@ export const Card = (props: CardProps) => {
 
     const paddingClass = mapPaddingToClass[padding];
 
+    const mods: Mods = {
+        [cls.fullWidth]: fullWidth,
+        [cls.fullHeight]: fullHeight,
+    };
+
     return (
         <div
-            className={classNames(cls.card, { [cls.fullWidth]: fullWidth }, [
+            className={classNames(cls.card, mods, [
                 className,
                 cls[variant],
                 cls[paddingClass],
