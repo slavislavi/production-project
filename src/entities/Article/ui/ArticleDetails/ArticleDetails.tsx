@@ -128,7 +128,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         content = (
             <TextDeprecated
                 align={TextAlign.CENTER}
-                title={t('Произошла ошибка при загрузке статьи.')}
+                title={t('Произошла ошибка при загрузке статьи', { ns: 'errors' })}
             />
         );
     } else {
