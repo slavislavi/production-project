@@ -13,6 +13,9 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetails
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/deprecated/Card';
+import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticleDetailsPageProps {
@@ -33,23 +36,54 @@ export const ArticleDetailsPage = memo((props: ArticleDetailsPageProps) => {
     }
 
     return (
-        <DynamicReducerLoader reducers={reducers}>
-            <Page
-                data-testid="ArticleDetailsPage"
-                className={classNames(cls.articleDetailsPage, {}, [className])}
-            >
-                <VStack gap="16" max>
-                    <ArticleDetailsPageHeader />
-                    <ArticleDetails id={id} />
-                    <ToggleFeatures
-                        feature="isArticleRatingEnabled"
-                        on={<ArticleRating articleId={id} />}
-                        off={<Card>{t('Анонс рейтинга', { ns: 'articleDetails' })}</Card>}
+        <DynamicReducerLoader reducers={reducers} removeAfterUnmount>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={(
+                    <StickyContentLayout
+                        content={(
+                            <Page
+                                className={classNames(
+                                    cls.articleDetailsPage,
+                                    {},
+                                    [className],
+                                )}
+                            >
+                                <VStack gap="16" max>
+                                    <DetailsContainer />
+                                    <ArticleRating articleId={id} />
+                                    <ArticleRecommendsList />
+                                    <ArticleDetailsComments id={id} />
+                                </VStack>
+                            </Page>
+                        )}
+                        right={<AdditionalInfoContainer />}
                     />
-                    <ArticleRecommendsList />
-                    <ArticleDetailsComments id={id} />
-                </VStack>
-            </Page>
+                )}
+                off={(
+                    <Page
+                        className={classNames(cls.articleDetailsPage, {}, [
+                            className,
+                        ])}
+                    >
+                        <VStack gap="16" max>
+                            <ArticleDetailsPageHeader />
+                            <ArticleDetails id={id} />
+                            <ToggleFeatures
+                                feature="isArticleRatingEnabled"
+                                on={<ArticleRating articleId={id} />}
+                                off={(
+                                    <Card>
+                                        {t('Анонс рейтинга', { ns: 'articleDetails' })}
+                                    </Card>
+                                )}
+                            />
+                            <ArticleRecommendsList />
+                            <ArticleDetailsComments id={id} />
+                        </VStack>
+                    </Page>
+                )}
+            />
         </DynamicReducerLoader>
     );
 });
