@@ -32,7 +32,6 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
                 feedback,
             });
         } catch (e) {
-            // handle error
             console.log(e);
         }
     }, [articleId, setArticleRatingMutation, userData?.id]);
