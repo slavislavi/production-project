@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, memo, ReactNode } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
@@ -23,7 +23,7 @@ const mapPaddingToClass: Record<CardPadding, string> = {
     24: 'gap_24',
 };
 
-export const Card = (props: CardProps) => {
+export const Card = memo((props: CardProps) => {
     const {
         className,
         children,
@@ -55,4 +55,4 @@ export const Card = (props: CardProps) => {
             {children}
         </div>
     );
-};
+});
