@@ -18,6 +18,7 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import cls from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -36,6 +37,7 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginIsLoading);
+    const forceUpdate = useForceUpdate();
 
     const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
@@ -49,8 +51,9 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            forceUpdate();
         }
-    }, [dispatch, onSuccess, password, username]);
+    }, [dispatch, forceUpdate, onSuccess, password, username]);
 
     return (
         <DynamicReducerLoader reducers={initialReducers} removeAfterUnmount>
