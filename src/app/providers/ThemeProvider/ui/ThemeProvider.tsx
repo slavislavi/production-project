@@ -8,7 +8,7 @@ import { LOCAL_STORAGE_THEME_KEY } from '@/shared/constants/localStorage';
 
 interface ThemeProviderProps {
     initialTheme?: Theme;
-    children: ReactNode
+    children: ReactNode;
 }
 
 const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
